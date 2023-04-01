@@ -15,7 +15,11 @@
         <div class="accordion-item">
           <div class="accordion-header" (click)="expendIt(0)">
             <div class="accordion-title">This is the course name</div>
-            <div class="accordion-description">Press to start</div>
+            <div class="accordion-description"> 
+                <button mat-mini-fab disabled>
+                <mat-icon>arrow_downward</mat-icon>
+            </button>
+        </div>
           </div>
           <div class="accordion-content" *ngIf="isExpendit[0]">
             <div class="pdfShow">
@@ -28,7 +32,11 @@
         <div class="accordion-item">
           <div class="accordion-header" (click)="expendIt(1)">
             <div class="accordion-title">This is the course name</div>
-            <div class="accordion-description">Press to start</div>
+            <div class="accordion-description">
+                <button mat-mini-fab disabled>
+                    <mat-icon>arrow_downward</mat-icon>
+                </button>
+            </div>
           </div>
           <div class="accordion-content" *ngIf="isExpendit[1]">
             <div class="pdfShow">
@@ -41,7 +49,11 @@
         <div class="accordion-item">
           <div class="accordion-header" (click)="expendIt(2)">
             <div class="accordion-title">This is the course name</div>
-            <div class="accordion-description">Press to start</div>
+            <div class="accordion-description">
+                <button mat-mini-fab disabled>
+                    <mat-icon>arrow_downward</mat-icon>
+                </button>
+            </div>
           </div>
           <div class="accordion-content" *ngIf="isExpendit[2]">
             <div class="pdfShow">
