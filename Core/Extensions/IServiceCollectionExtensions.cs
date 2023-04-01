@@ -38,9 +38,10 @@ namespace Core.Extensions
             services.AddScoped<UsersRepository>();
             services.AddScoped<CoursesRepository>();
             services.AddScoped<AnswersRepository>();
-            services.AddScoped<QuestionsRepitory>();
+            services.AddScoped<QuestionsRepsitory>();
             services.AddScoped<RewardsRepository>();
             services.AddScoped<TaskToDoRepository>();
+            services.AddScoped<QuizzesRepository>();
             services.AddScoped<BadgesRepository>();
         }
 
@@ -54,6 +55,7 @@ namespace Core.Extensions
             services.AddScoped<CourseService>();
             services.AddScoped<TaskToDoService>();
             services.AddScoped<RewardService>();
+            services.AddScoped<QuizzezService>();
             services.AddScoped<BadgeService>();
         }
 

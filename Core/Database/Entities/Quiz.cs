@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Core.Database.Entities
 {
-    public class Course : BaseEntity
+    public class Quiz : BaseEntity
     {
         public string Name { get; set; }
-        public string Description { get; set; }
-        public List<Quiz> Quizzes { get; set; }
+        public int Points { get; set; }
+        public List<Question> Questions { get; set; }
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
     }
 }

@@ -20,9 +20,8 @@ namespace Core.UnitOfWork
         public AnswersRepository _answersRepository { get; set; }
         public QuestionsRepitory _questionsRepitory { get; set; }
         public RewardsRepository _rewardsRepository { get; set; }
- 
-        public BadgesRepository _badgesRepository { get; set; }
         public TaskToDoRepository _taskToDoRepository { get; set; }
+        public QuizzesRepository _quizzesRepository { get; set; }
 
         public EfUnitOfWork(
             HackatonDbContext context,
@@ -35,6 +34,9 @@ namespace Core.UnitOfWork
             QuestionsRepitory questionsRepitory,
             RewardsRepository rewardsRepository,
             BadgesRepository badgesRepository
+            QuestionsRepsitory questionsRepitory,
+            RewardsRepository rewardsRepository,
+            QuizzesRepository quizzesRepository
             )
         {
             _context = context;
@@ -47,6 +49,7 @@ namespace Core.UnitOfWork
             _questionsRepitory = questionsRepitory;
             _rewardsRepository = rewardsRepository;
             _badgesRepository = badgesRepository;
+            _quizzesRepository = quizzesRepository;
         }
         public void Dispose()
         {
