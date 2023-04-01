@@ -33,7 +33,11 @@ namespace Core.Services
                 }
             }
 
-            //var projectExists = ...
+            var projectExists = await _unitOfWork._projectRepository.GetProjectById(payload.ProjectId);
+            if (projectExists == null)
+            {
+                throw new WrongInputException($"Project with id {payload.ProjectId} does not exist");
+            }
 
             if(payload.Points < 0)
             {
