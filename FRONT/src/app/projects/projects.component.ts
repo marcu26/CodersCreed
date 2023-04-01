@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent {
-
+  items = ['1', '2', '3', '4', '2', '3', '4', '2', '3', '4', '2', '3', '4', '2', '3', '4', '2', '3', '4']
 }

@@ -1,4 +1,30 @@
-.body {
-    width: 90vw;
-    height: 80vh;
+.list-item {
+    display: flex;
+    width: 100%;
+    border-radius: 20px;
+    border-style: none;
+    background-color: white;
+    height: 55px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item:hover {
+    background-color: gainsboro;
+    margin-left: 10px;
+}
+
+.item-element {
+    margin-inline: 20px;
+}
+
+.item-text {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.list {
+    padding-bottom: 10px;
 }
