@@ -38,6 +38,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfileComponent,
     RewardsComponent,
     LeaderboardComponent,
+    CoursePreviewComponent,
   ],
   imports: [
     BrowserModule,
