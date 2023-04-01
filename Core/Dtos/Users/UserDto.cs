@@ -18,6 +18,9 @@ namespace Core.Dtos.Users
         public string Username { get; set; }
         public string? Image { get; set; }
         public string Function { get; set; }
+        public int Level { get; set; }
+        public int Points { get; set; }
+        public int Rank { get; set; }
         public List<RoleDto> Roles { get; set; }
 
     }

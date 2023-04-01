@@ -9,6 +9,7 @@ using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
 using Core.UnitOfWork;
 using Infrastructure.Exceptions;
+using Microsoft.Identity.Client;
 
 namespace Core.Repositories
 {
@@ -41,6 +42,7 @@ namespace Core.Repositories
             var query = _DbContext.Users
                 .Where(e => !e.IsDeleted)
                 .Include(e=>e.UserRoles)
+                .ThenInclude(ur=>ur.Role)
                .AsQueryable();
             dto.NumarTotalRanduri = await query.CountAsync();
             dto.NumarRanduriFiltrate= await query.CountAsync();
@@ -113,7 +115,7 @@ namespace Core.Repositories
         public async Task<bool> IsUserHavingTheBadge(int userId, int badgeId)
         {
             return await _DbContext.Users
-                .Include(u => u.Rewards)
+                .Include(u => u.Badges)
                 .Where(u => u.Id == userId)
                 .Where(u => u.Badges.Any(b => b.Id == badgeId))
                 .AnyAsync();
@@ -153,6 +155,13 @@ namespace Core.Repositories
             user.Experience += xpPoints;
 
             await _DbContext.SaveChangesAsync();
+        }
+
+        public int GetRank(int userId) 
+        {
+            int userExperience =  _DbContext.Users.Where(u => u.Id == userId).Select(u => u.Experience).SingleOrDefault();
+            int userRank =   _DbContext.Users.Where(u => u.Experience > userExperience).Count() + 1;
+            return userRank;
         }
     }
 }
