@@ -32,6 +32,8 @@ namespace Core.Repositories
         {
             return await _DbContext.Projects
                 .Where(p => p.Id == projectId && !p.IsDeleted)
+                .Include(p=>p.ProjectUsers)
+                .ThenInclude(p =>p.User)
                 .FirstOrDefaultAsync();
         }
 
@@ -43,6 +45,7 @@ namespace Core.Repositories
                 .Projects
                 .Where(p => !p.IsDeleted)
                 .Include(p=>p.ProjectUsers)
+                .ThenInclude(pu=>pu.User)
                 .AsQueryable();
 
             dto.NumarTotalRanduri = await querry.CountAsync();
