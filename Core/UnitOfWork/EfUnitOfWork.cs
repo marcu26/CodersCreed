@@ -21,11 +21,15 @@ namespace Core.UnitOfWork
         public QuestionsRepitory _questionsRepitory { get; set; }
         public RewardsRepository _rewardsRepository { get; set; }
  
+        public TaskToDoRepository _taskToDoRepository { get; set; }
+
         public EfUnitOfWork(
             HackatonDbContext context,
             RolesRepository rolesRepository,
             UserRoleRepository userRolesRepository,
             UsersRepository usersRepository,
+            CoursesRepository coursesRepository,
+            TaskToDoRepository taskToDoRepository
             AnswersRepository answersRepository,
             QuestionsRepitory questionsRepitory,
             CoursesRepository coursesRepository,
@@ -36,6 +40,7 @@ namespace Core.UnitOfWork
             _rolesRepository = rolesRepository;
             _usersRepository = usersRepository;
             _userRoleRepository = userRolesRepository;
+            _taskToDoRepository = taskToDoRepository;
             _coursesRepository = coursesRepository;
             _answersRepository = answersRepository;
             _questionsRepitory = questionsRepitory;

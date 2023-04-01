@@ -40,6 +40,7 @@ namespace Core.Extensions
             services.AddScoped<AnswersRepository>();
             services.AddScoped<QuestionsRepitory>();
             services.AddScoped<RewardsRepository>();
+            services.AddScoped<TaskToDoRepository>();
         }
 
         public static void AddServices(this IServiceCollection services)
@@ -50,6 +51,7 @@ namespace Core.Extensions
             services.AddScoped<RoleService>();
             services.AddScoped<EmailService>();
             services.AddScoped<CourseService>();
+            services.AddScoped<TaskToDoService>();
             services.AddScoped<RewardService>();
         }
 
