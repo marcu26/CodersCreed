@@ -1,0 +1,35 @@
+<div class="container-body">
+    <div class="title">PROFILE</div>
+    <div class="container">
+        <br>
+        <br>
+        <div class="quizzShow" *ngFor="let question of questions">
+            <h3>{{ question.question }}</h3>
+            <ul>
+              <li *ngFor="let choice of question.choices">
+                <label>
+                  <input type="radio"
+                         name="question{{ question.id }}"
+                         [value]="choice"
+                         [(ngModel)]="question.selected"
+                         (change)="selectAnswer()">
+                  {{ choice }}
+                </label>
+              </li>
+            </ul>
+            <div *ngIf="!question.selected" class="error-message">
+              Please select an answer.
+            </div>
+            
+          </div>
+          
+          <br>
+          
+          <div display="flex">
+          <button class="buttonSubmit" [disabled]="!allQuestionsAnswered" (click)="submit()">Submit</button>
+        </div>
+          <div *ngIf="quizCompleted">
+            <p>Your score: {{ score }} out of {{ questions.length }}</p>
+          </div>
+      
+</div>

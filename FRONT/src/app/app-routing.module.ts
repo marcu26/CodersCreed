@@ -5,12 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { RewardsComponent } from './rewards/rewards.component';
+import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
 
 const routes: Routes = [
 	{ path: "projects", component: ProjectsComponent },
 	{ path: "leaderboard", component: LeaderboardComponent },
 	{ path: "rewards", component: RewardsComponent },
-	{ path: "profile", component: ProfileComponent },
+	{ path: "profile", component: CourseQuizzComponent },
 	{ path: "login", component: LoginComponent },
 	{ path: "**", component: LoginComponent },
 ];
