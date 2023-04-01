@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Core.Dtos.Users
 {
-    public class CreateUserDto
+    public class GetUserForLeaderbordDto
     {
-        public string Email { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
         public string Function { get; set; }
-        public string? Image { get; set; }
+        public string Image { get; set; }
+        public int Experience { get; set; }
     }
 }

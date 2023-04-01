@@ -55,8 +55,13 @@ namespace Core.Services
                 Email = payload.Email,
                 Username = payload.Username,
                 Password = Base64Encoder.Encode(payload.Password),
-
+                Function=payload.Function
             };
+
+            if (payload.Image != null) 
+            {
+                user.Image = payload.Image;
+            }
 
             _unitOfWork._usersRepository.Add(user);
 
@@ -121,6 +126,8 @@ namespace Core.Services
             {
                 Id = user.Id,
                 Username = user.Username,
+                Function =user.Function,
+                Image=user.Image,
                 Roles = user.UserRoles.Select(r => new RoleDto()
                 {
                     Id = r.Role.Id,
@@ -146,11 +153,34 @@ namespace Core.Services
                 {
                     Id = e.Id,
                     Username = e.Username,
+                    Function=e.Function,
+                    Image=e.Image,
                     Roles = e.UserRoles.Select(ur => new RoleDto()
                     {
                         Id = ur.Role.Id,
                         Title = ur.Role.Title
                     }).ToList()
+                })
+            };
+        }
+
+        public async Task<PageableResponse> GetLeaderbordAsync(PageablePostModel request)
+        {
+            var dto = await _unitOfWork
+                    ._usersRepository
+                    .GetPaginaAsyncLeaders(request.start, request.length);
+
+            return new PageableResponse()
+            {
+                draw = request.draw,
+                recordTotal = dto.NumarTotalRanduri,
+                recordsFiltered = dto.NumarRanduriFiltrate,
+                data = dto.Pagina.Select(e => new GetUserForLeaderbordDto
+                {
+                    Username = e.Username,
+                    Function = e.Function,
+                    Image = e.Image,
+                    Experience = e.Experience
                 })
             };
         }
@@ -174,6 +204,8 @@ namespace Core.Services
 
 
             user.Username = String.IsNullOrEmpty(payload.Username) ? user.Username : payload.Username;
+            user.Function = String.IsNullOrEmpty(payload.Function) ? user.Function : payload.Function;
+            user.Image = String.IsNullOrEmpty(payload.Image) ? user.Image : payload.Image;
 
             user.UserRoles.RemoveAll(ur => ur.UserId == user.Id);
 
@@ -317,6 +349,8 @@ namespace Core.Services
 
             await _unitOfWork.SaveAsync();
         }
+
+     
 
     }
 }
