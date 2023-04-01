@@ -1,3 +1,17 @@
 <div class="body">
-
+    <div class="title">PROJECTS</div>
+    <br>
+    <br>
+    <div class="list">
+        <button class="list-item" *ngFor="let item of items">
+            <span class="item-text item-element">15 ian.</span>
+            <span class="item-text item-element">Nume proiect</span>
+            <span class="item-text item-element">Nume manager</span>
+            <span class="item-element">
+                <button mat-mini-fab disabled>
+                    <mat-icon>arrow_forward_ios</mat-icon>
+                </button>
+            </span>
+        </button>
+    </div>
 </div>
