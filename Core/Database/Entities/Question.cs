@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace Core.Database.Entities
 {
-    public class Answer : BaseEntity
+    public class Question : BaseEntity
     {
         public string Content { get; set; }
-        public bool IsCorrect { get; set; }
-        public int QuestionId { get; set; }
-        public Question Question { get; set; }
+        public List<Answer> Answers { get; set; }
     }
 }

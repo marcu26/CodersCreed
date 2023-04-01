@@ -26,6 +26,7 @@ namespace Core.Database.Context
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<Question> Questions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,6 +43,12 @@ namespace Core.Database.Context
             modelBuilder.Entity<UserRole>().ToTable("UserRoles").HasKey(ur => new { ur.UserId, ur.RoleId });
             modelBuilder.Entity<Course>().ToTable("Courses").HasKey(c => c.Id);
             modelBuilder.Entity<Answer>().ToTable("Answers").HasKey(a => a.Id);
+            modelBuilder.Entity<Question>().ToTable("Questions").HasKey(q => q.Id);
+
+            modelBuilder.Entity<Question>().HasMany(q => q.Answers)
+                .WithOne(a=>a.Question)
+                .HasForeignKey(a => a.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             new DbInitializer(modelBuilder).Seed();
         }
