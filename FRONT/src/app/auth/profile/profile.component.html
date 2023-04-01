@@ -1,0 +1,49 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div" class="formContainer">
+    <mat-card fxFlex="70">
+        <mat-toolbar color="primary" class="containerToolbar">Profile</mat-toolbar>
+        <mat-stepper orientation="horizontal" [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form fxLayout="column" class="login-form" [formGroup]="firstFormGroup" fxLayoutAlign="stretch">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email" autocomplete="">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password" autocomplete="">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>First Name</mat-label>
+                        <input type="text" matInput formControlName="firstName" autocomplete="">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Last Name</mat-label>
+                        <input type="text" matInput formControlName="lastName" autocomplete="">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Institutie</mat-label>
+                        <input type="text" matInput formControlName="institution" autocomplete="">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>UEFID</mat-label>
+                        <input type="text" matInput formControlName="uefid" autocomplete="">
+                    </mat-form-field>
+                    <ng-template matStepLabel>Change your data</ng-template>
+                    <button mat-button matStepperNext>Next</button>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup" class="login-form" fxLayoutAlign="stretch" fxLayout="column">
+                    <mat-hint> Please insert your password to confirm the changes</mat-hint>
+                    <ng-template matStepLabel>Verify password</ng-template>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password" autocomplete="">
+                    </mat-form-field>
+                    <button mat-button (click)="onSubmit()">Submit</button>
+                </form>
+            </mat-step>
+        </mat-stepper>
+    </mat-card>
+
+</div>

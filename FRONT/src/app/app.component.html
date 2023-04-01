@@ -1,0 +1,20 @@
+<mat-drawer-container (click)="drawer.close()" class="parent"
+  [ngStyle]="{backgroundImage:'url(./assets/blured-background.jpg)'}">
+  <mat-drawer #drawer class="sidenav" mode="side" position="end">
+    <mat-nav-list (click)="drawer.toggle()">
+      <br />
+      <br />
+      <a mat-list-item routerLink="profile">Profile</a>
+      <a mat-list-item routerLink="login">Login</a>
+      <a mat-list-item>Logout</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+<mat-toolbar color="primary" class="child">
+  <span>APP NAME</span>
+  <span class="spacer"></span>
+  <button mat-icon-button type="button" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>

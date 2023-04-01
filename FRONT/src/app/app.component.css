@@ -1,0 +1,25 @@
+.sidenav {
+    padding: 20px;
+}
+
+.parent{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.child{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+a:hover{
+  background:#673AB7!important;
+}
+
+a{
+    border-radius: 5px;
+    font-weight: bold;
+}
