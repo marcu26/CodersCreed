@@ -37,9 +37,7 @@ namespace Core.UnitOfWork
             RewardsRepository rewardsRepository,
             BadgesRepository badgesRepository,
             QuestionsRepsitory questionsRepitory,
-            QuizzesRepository quizzesRepository
-            QuestionsRepitory questionsRepitory,
-            RewardsRepository rewardsRepository,
+            QuizzesRepository quizzesRepository,
             ProjectRepository projectRepository,
             ProjectUserRepository projectUserRepository
             )
