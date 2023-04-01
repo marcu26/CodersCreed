@@ -11,6 +11,8 @@ using System.Numerics;
 using ISoft.Travel.Core.Dtos.EmailDtos;
 using ISoft.Travel.Core.Services;
 using System.Data;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Identity.Client;
 
 namespace Core.Services
 {
@@ -237,6 +239,34 @@ namespace Core.Services
 
             user.Password = Base64Encoder.Encode(payload.Password);
             user.ResetPasswordCode = null;
+
+            await _unitOfWork.SaveAsync();
+        }
+
+        public async Task AddRewardToUser(int userId, int rewardId)
+        {
+            var user = await _unitOfWork._usersRepository.GetUserByIdAsyncWithProperties(userId);
+
+            if (user == null)
+                throw new WrongInputException($"User with id={userId} does not exist.");
+
+            if (user.IsDeleted)
+                throw new WrongInputException($"User with id={userId} does not exist.");
+
+            var reward = await _unitOfWork._rewardsRepository.GetByIdAsync(rewardId);
+
+            if (reward == null)
+                throw new WrongInputException($"Reward with id {rewardId} does not exist.");
+
+            if (reward.IsDeleted)
+                throw new WrongInputException($"Reward with id {rewardId} does not exist.");
+
+            var exists = await _unitOfWork._usersRepository.IsUserHavingTheReward(userId, rewardId);
+
+            if (exists)
+                throw new WrongInputException($"User with id {userId} allready has the reward {rewardId}");
+
+            user.Rewards.Add(reward);
 
             await _unitOfWork.SaveAsync();
         }

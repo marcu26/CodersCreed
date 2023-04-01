@@ -85,11 +85,11 @@ namespace Core.Services
             await _efUnitOfWork.SaveAsync();
         }
 
-        public async Task<PageableResponse> GetPaginaAsync(PageablePostModel request)
+        public async Task<PageableResponse> GetPaginaAsync(PageablePostModelReward request)
         {
             var dto = await _efUnitOfWork
                     ._rewardsRepository
-                    .GetPaginaAsync(request.start, request.length);
+                    .GetPaginaAsync(request);
 
             return new PageableResponse()
             {

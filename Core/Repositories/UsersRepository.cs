@@ -79,6 +79,21 @@ namespace Core.Repositories
             return await _DbContext.Users.Where(u => u.ResetPasswordCode == resetPasswordCode).FirstOrDefaultAsync();
         }
 
+        public async Task<bool> IsUserHavingTheReward(int userId, int rewardId) 
+        {
+            return await  _DbContext.Users
+                .Include(u => u.Rewards)
+                .Where(u => u.Id == userId)
+                .Where(u=> u.Rewards.Any(r=>r.Id==rewardId))
+                .AnyAsync();
+        }
+
+        public async Task<User> GetUserByIdAsyncWithProperties(int userId) 
+        {
+            return await _DbContext.Users.Where(u => u.Id == userId && !u.IsDeleted)
+                .Include(u=>u.Rewards).FirstOrDefaultAsync();
+        }
+
 
     }
 }

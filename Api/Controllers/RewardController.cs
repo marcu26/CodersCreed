@@ -83,7 +83,7 @@ namespace Api.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpPost("get-pagina")]
-        public async Task<ActionResult> GetRewardsPaginaAsync([FromBody] PageablePostModel request)
+        public async Task<ActionResult> GetRewardsPaginaAsync([FromBody] PageablePostModelReward request)
         {
             try
             {
