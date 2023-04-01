@@ -1,0 +1,109 @@
+.list-item {
+    display: flex;
+    width: 90%;
+    border-radius: 20px;
+    border-style: none;
+    background-color: white;
+    height: 55px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.list-item:hover {
+    background-color: gainsboro;
+    margin-left: 10px;
+}
+
+.item-element {
+    margin-inline: 20px;
+}
+
+.item-text {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.list {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    width: 50%;
+    background-color: rgba(124, 114, 114, 0.5);
+    margin-right: 20px;
+    overflow-y: scroll;
+    
+    
+}
+
+.list2 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    width: 50%;
+    float: right;
+    background-color: rgba(124, 114, 114, 0.5);
+    overflow-y: scroll;
+}
+
+.list3 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    width: 50%;
+    float: left;
+    background-color: rgba(124, 114, 114, 0.5);
+    overflow-y: scroll;
+}
+
+.list4 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    width: 50%;
+    float: right;
+    background-color: rgba(124, 114, 114, 0.5);
+    overflow-y: scroll;
+}
+
+.showedData{
+    display:flex;
+
+}
+
+.title2{
+    color: #673AB7;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    
+}
+
+.title3{
+    padding-left:20px;
+    color: #673AB7;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: left;
+    
+}
+
+.title4{
+    padding-left:20px;
+    color: #673AB7;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left;
+    
+}
+
+
+.title5{
+    padding-left:20px;
+    color: #673AB7;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left;
+    
+}
+
+

@@ -41,6 +41,7 @@ import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectDataComponent } from './project-data/project-data.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LeaderboardComponent,
     RewardDialogComponent,
     CoursePreviewComponent,
+    ProjectDataComponent,
   ],
   imports: [
     BrowserModule,
