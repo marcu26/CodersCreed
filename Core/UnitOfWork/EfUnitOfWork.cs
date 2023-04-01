@@ -27,6 +27,7 @@ namespace Core.UnitOfWork
         public BadgesRepository _badgesRepository { get; set; }
         public CategoryRepository _categoryRepository { get; set; }
         public UserCategoryRepository _userCategoryRepository { get; set; }
+        public CourseSectionRepository _courseSectionRepository { get; set; }
         public EfUnitOfWork(
             HackatonDbContext context,
             RolesRepository rolesRepository,
@@ -42,7 +43,8 @@ namespace Core.UnitOfWork
             ProjectRepository projectRepository,
             ProjectUserRepository projectUserRepository,
             CategoryRepository categoryRepository,
-            UserCategoryRepository userCategoryRepository
+            UserCategoryRepository userCategoryRepository,
+            CourseSectionRepository courseSectionRepository
             )
         {
             _context = context;
@@ -60,6 +62,7 @@ namespace Core.UnitOfWork
             _projectUserRepository = projectUserRepository;
             _categoryRepository = categoryRepository;
             _userCategoryRepository = userCategoryRepository;
+            _courseSectionRepository = courseSectionRepository;
         }
         public void Dispose()
         {

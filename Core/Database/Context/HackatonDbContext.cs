@@ -36,6 +36,7 @@ namespace Core.Database.Context
         public DbSet<Badge> Badges { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserCategory> UserCategories { get; set; }
+        public DbSet<CourseSection> CourseSections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -58,6 +59,7 @@ namespace Core.Database.Context
             modelBuilder.Entity<ProjectUser>().ToTable("ProjectUsers").HasKey(pu => new {pu.ProjectId, pu.UserId});
             modelBuilder.Entity<Category>().ToTable("Categories").HasKey(c => c.Id);
             modelBuilder.Entity<UserCategory>().ToTable("UserCategories").HasKey(uc => new { uc.CategoryId, uc.UserId });
+            modelBuilder.Entity<CourseSection>().ToTable("CourseSections").HasKey(c => c.Id);
 
             modelBuilder.Entity<Question>().HasMany(q => q.Answers)
                 .WithOne(a=>a.Question)
@@ -110,6 +112,12 @@ namespace Core.Database.Context
                 .HasOne(t => t.User)
                 .WithMany(t => t.UserCategories)
                 .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<CourseSection>()
+                .HasOne(t => t.Course)
+                .WithMany(t => t.CourseSections)
+                .HasForeignKey(t => t.CourseId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Reward>().ToTable("Rewards").HasKey(r => r.Id);
