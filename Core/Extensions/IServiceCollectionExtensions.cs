@@ -46,6 +46,7 @@ namespace Core.Extensions
             services.AddScoped<RoleService>();
             services.AddScoped<EmailService>();
             services.AddScoped<CourseService>();
+            services.AddScoped<AnswersRepository>();
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)

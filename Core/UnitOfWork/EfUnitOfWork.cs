@@ -16,15 +16,16 @@ namespace Core.UnitOfWork
         public RolesRepository _rolesRepository { get; set; }
         public UsersRepository _usersRepository { get; set; }
         public UserRoleRepository _userRoleRepository { get; set; }
-
         public CoursesRepository _coursesRepository { get; set; }
+        public AnswersRepository _answersRepository { get; set; }
  
         public EfUnitOfWork(
             HackatonDbContext context,
             RolesRepository rolesRepository,
             UserRoleRepository userRolesRepository,
             UsersRepository usersRepository,
-            CoursesRepository coursesRepository
+            CoursesRepository coursesRepository,
+            AnswersRepository answersRepository
             )
         {
             _context = context;
@@ -32,6 +33,7 @@ namespace Core.UnitOfWork
             _usersRepository = usersRepository;
             _userRoleRepository = userRolesRepository;
             _coursesRepository = coursesRepository;
+            _answersRepository = answersRepository;
         }
         public void Dispose()
         {
