@@ -266,22 +266,26 @@ namespace Core.Services
             if (exists)
                 throw new WrongInputException($"User with id {userId} allready has the reward {rewardId}");
 
+            if(user.Points - reward.Cost< 0)
+                throw new WrongInputException($"User with id {userId} has not enough points to buy reward with id: {rewardId}");
+
+            user.Points -= reward.Cost;
             user.Rewards.Add(reward);
 
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task AddPointsAsync(int points, int userId)
+        public async Task AddXpToUserAsync(int userId, int xp)
         {
-            var user = await _unitOfWork._usersRepository.GetUserByIdAsync(userId);
+            var user  = await _unitOfWork._usersRepository.GetUserByIdAsync(userId);
 
             if(user == null)
-                throw new WrongInputException($"The user with the id: {userId} does not exist");
+                throw new WrongInputException($"User with id={userId} does not exist.");
 
-            if(points < 0)
-                throw new WrongInputException("You can not add a negative number");
+            if(xp < 0)
+                throw new WrongInputException($"The number of Xp must be a positive number");
 
-            user.Points += points;
+            user.Experience += xp;
 
             await _unitOfWork.SaveAsync();
         }

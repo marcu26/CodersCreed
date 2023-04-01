@@ -111,18 +111,6 @@ namespace Core.Repositories
             await _DbContext.SaveChangesAsync();
         }
 
-        public async Task SubstractPointsAsync(int points, int userId)
-        {
-            var user = await GetUserByIdAsync(userId);
-
-            if (user == null)
-                throw new WrongInputException($"The user with the id: {userId} does not exist");
-
-            user.Points -= points;
-
-            await _DbContext.SaveChangesAsync();
-        }
-
         public async Task AddXpAsync(int userId,int xpPoints)
         {
             var user = await GetUserByIdAsync(userId);
