@@ -4,6 +4,7 @@ using Core.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Migrations
 {
     [DbContext(typeof(HackatonDbContext))]
-    partial class HackatonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230401150843_AddedQuizzes")]
+    partial class AddedQuizzes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,9 +119,6 @@ namespace Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -133,8 +133,6 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
 
                     b.ToTable("Quizzes", (string)null);
                 });
@@ -196,28 +194,28 @@ namespace Core.Migrations
                         {
                             Id = 1,
                             IsDeleted = false,
-                            Timestamp = new DateTime(2023, 4, 1, 19, 4, 14, 290, DateTimeKind.Local).AddTicks(7362),
+                            Timestamp = new DateTime(2023, 4, 1, 18, 8, 43, 362, DateTimeKind.Local).AddTicks(7824),
                             Title = "Administrator"
                         },
                         new
                         {
                             Id = 2,
                             IsDeleted = false,
-                            Timestamp = new DateTime(2023, 4, 1, 19, 4, 14, 290, DateTimeKind.Local).AddTicks(7391),
+                            Timestamp = new DateTime(2023, 4, 1, 18, 8, 43, 362, DateTimeKind.Local).AddTicks(7850),
                             Title = "Manager"
                         },
                         new
                         {
                             Id = 3,
                             IsDeleted = false,
-                            Timestamp = new DateTime(2023, 4, 1, 19, 4, 14, 290, DateTimeKind.Local).AddTicks(7393),
+                            Timestamp = new DateTime(2023, 4, 1, 18, 8, 43, 362, DateTimeKind.Local).AddTicks(7852),
                             Title = "AccountCreator"
                         },
                         new
                         {
                             Id = 4,
                             IsDeleted = false,
-                            Timestamp = new DateTime(2023, 4, 1, 19, 4, 14, 290, DateTimeKind.Local).AddTicks(7394),
+                            Timestamp = new DateTime(2023, 4, 1, 18, 8, 43, 362, DateTimeKind.Local).AddTicks(7853),
                             Title = "User"
                         });
                 });
@@ -316,7 +314,7 @@ namespace Core.Migrations
                             IsDeleted = false,
                             Password = "YWRtaW4=",
                             Points = 0,
-                            Timestamp = new DateTime(2023, 4, 1, 19, 4, 14, 290, DateTimeKind.Local).AddTicks(7478),
+                            Timestamp = new DateTime(2023, 4, 1, 18, 8, 43, 362, DateTimeKind.Local).AddTicks(7932),
                             Username = "admin"
                         });
                 });
@@ -380,17 +378,6 @@ namespace Core.Migrations
                     b.Navigation("Quiz");
                 });
 
-            modelBuilder.Entity("Core.Database.Entities.Quiz", b =>
-                {
-                    b.HasOne("Core.Database.Entities.Course", "Course")
-                        .WithMany("Quizzes")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-                });
-
             modelBuilder.Entity("Core.Database.Entities.UserRole", b =>
                 {
                     b.HasOne("Core.Database.Entities.Role", "Role")
@@ -408,11 +395,6 @@ namespace Core.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Core.Database.Entities.Course", b =>
-                {
-                    b.Navigation("Quizzes");
                 });
 
             modelBuilder.Entity("Core.Database.Entities.Question", b =>

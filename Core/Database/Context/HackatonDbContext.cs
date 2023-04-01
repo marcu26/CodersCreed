@@ -29,7 +29,7 @@ namespace Core.Database.Context
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<TaskToDo> TasksToDo { get; set; }
-
+        public DbSet<Quiz> Quizzes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,14 +44,26 @@ namespace Core.Database.Context
             modelBuilder.Entity<User>().Property(u => u.ResetPasswordCode).IsRequired(false);
             modelBuilder.Entity<UserRole>().ToTable("UserRoles").HasKey(ur => new { ur.UserId, ur.RoleId });
             modelBuilder.Entity<TaskToDo>().ToTable("TasksToDo").HasKey(t => t.Id);
-
             modelBuilder.Entity<Course>().ToTable("Courses").HasKey(c => c.Id);
             modelBuilder.Entity<Answer>().ToTable("Answers").HasKey(a => a.Id);
             modelBuilder.Entity<Question>().ToTable("Questions").HasKey(q => q.Id);
+            modelBuilder.Entity<Quiz>().ToTable("Quizzes").HasKey(q => q.Id);
+
+
 
             modelBuilder.Entity<Question>().HasMany(q => q.Answers)
                 .WithOne(a=>a.Question)
                 .HasForeignKey(a => a.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Quiz>().HasMany(q => q.Questions)
+                .WithOne(qz => qz.Quiz)
+                .HasForeignKey(q => q.QuizId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Course>().HasMany(c => c.Quizzes)
+                .WithOne(qz => qz.Course)
+                .HasForeignKey(qz => qz.CourseId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Reward>().ToTable("Rewards").HasKey(r => r.Id);

@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories
 {
-    public class QuestionsRepitory : BaseRepository<Question>
+    public class QuestionsRepsitory : BaseRepository<Question>
     {
         public HackatonDbContext _DbContext { get; set; }
-        public QuestionsRepitory(HackatonDbContext DbContext) : base(DbContext)
+        public QuestionsRepsitory(HackatonDbContext DbContext) : base(DbContext)
         {
             _DbContext = DbContext;
         }
+
+
     }
 }
