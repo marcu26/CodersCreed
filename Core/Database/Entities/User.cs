@@ -17,6 +17,8 @@ namespace Core.Database.Entities
         public int Experience { get; set; } = 0;
         public List<UserRole> UserRoles { get; set; } = new List<UserRole>();
         public List<ProjectUser> ProjectUsers { get; set; }
+        public List<UserCategory> UserCategories { get; set; }
+
         public List<Reward> Rewards { get; set; }
         public List<Badge> Badges { get; set; }
     }

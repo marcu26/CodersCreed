@@ -4,6 +4,7 @@ using Core.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Migrations
 {
     [DbContext(typeof(HackatonDbContext))]
-    partial class HackatonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230401215548_CategoryAndUserCategory")]
+    partial class CategoryAndUserCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,21 +53,6 @@ namespace Core.Migrations
                     b.HasIndex("ProjectsId");
 
                     b.ToTable("CategoryProject");
-                });
-
-            modelBuilder.Entity("BadgeUser", b =>
-                {
-                    b.Property<int>("BadgesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BadgesId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("BadgeUser");
                 });
 
             modelBuilder.Entity("Core.Database.Entities.Answer", b =>
@@ -542,21 +530,6 @@ namespace Core.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RewardUser", b =>
-                {
-                    b.Property<int>("RewardsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RewardsId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("RewardUser");
-                });
-
             modelBuilder.Entity("CategoryCourse", b =>
                 {
                     b.HasOne("Core.Database.Entities.Category", null)
@@ -583,21 +556,6 @@ namespace Core.Migrations
                     b.HasOne("Core.Database.Entities.Project", null)
                         .WithMany()
                         .HasForeignKey("ProjectsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BadgeUser", b =>
-                {
-                    b.HasOne("Core.Database.Entities.Badge", null)
-                        .WithMany()
-                        .HasForeignKey("BadgesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Database.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -706,26 +664,6 @@ namespace Core.Migrations
             modelBuilder.Entity("Core.Database.Entities.Category", b =>
                 {
                     b.Navigation("UserCategories");
-                });
-
-            modelBuilder.Entity("Core.Database.Entities.Course", b =>
-                {
-                    b.Navigation("Quizzes");
-                });
-
-            modelBuilder.Entity("RewardUser", b =>
-                {
-                    b.HasOne("Core.Database.Entities.Reward", null)
-                        .WithMany()
-                        .HasForeignKey("RewardsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Database.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Database.Entities.Course", b =>
