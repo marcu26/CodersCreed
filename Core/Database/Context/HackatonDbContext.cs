@@ -25,6 +25,7 @@ namespace Core.Database.Context
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<TaskToDo> TasksToDo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,6 +40,8 @@ namespace Core.Database.Context
             modelBuilder.Entity<Role>().ToTable("Roles").HasKey(r => r.Id);
             modelBuilder.Entity<User>().Property(u => u.ResetPasswordCode).IsRequired(false);
             modelBuilder.Entity<UserRole>().ToTable("UserRoles").HasKey(ur => new { ur.UserId, ur.RoleId });
+            modelBuilder.Entity<TaskToDo>().ToTable("TasksToDo").HasKey(t => t.Id);
+
             modelBuilder.Entity<Course>().ToTable("Courses").HasKey(c => c.Id);
        
             new DbInitializer(modelBuilder).Seed();

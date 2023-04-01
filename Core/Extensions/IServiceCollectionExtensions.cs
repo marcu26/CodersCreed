@@ -36,6 +36,7 @@ namespace Core.Extensions
             services.AddScoped<UserRoleRepository>();
             services.AddScoped<UsersRepository>();
             services.AddScoped<CoursesRepository>();
+            services.AddScoped<TaskToDoRepository>();
         }
 
         public static void AddServices(this IServiceCollection services)
@@ -46,6 +47,7 @@ namespace Core.Extensions
             services.AddScoped<RoleService>();
             services.AddScoped<EmailService>();
             services.AddScoped<CourseService>();
+            services.AddScoped<TaskToDoService>();
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)
