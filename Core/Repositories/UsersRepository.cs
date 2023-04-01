@@ -7,6 +7,8 @@ using Core.Dtos.Users;
 using Core.Utils;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
+using Core.UnitOfWork;
+using Infrastructure.Exceptions;
 
 namespace Core.Repositories
 {
@@ -79,6 +81,43 @@ namespace Core.Repositories
             return await _DbContext.Users.Where(u => u.ResetPasswordCode == resetPasswordCode).FirstOrDefaultAsync();
         }
 
+        public async Task AddPointsAsync(int points, int userId)
+        {
+            var user = await GetUserByIdAsync(userId);
 
+            if (user == null)
+                throw new WrongInputException($"The user with the id: {userId} does not exist");
+
+            if (points < 0)
+                throw new WrongInputException("You can not add a negative number");
+
+            user.Points += points;
+
+            await _DbContext.SaveChangesAsync();
+        }
+
+        public async Task SubstractPointsAsync(int points, int userId)
+        {
+            var user = await GetUserByIdAsync(userId);
+
+            if (user == null)
+                throw new WrongInputException($"The user with the id: {userId} does not exist");
+
+            user.Points -= points;
+
+            await _DbContext.SaveChangesAsync();
+        }
+
+        public async Task AddXpAsync(int userId,int xpPoints)
+        {
+            var user = await GetUserByIdAsync(userId);
+
+            if(user == null)
+                throw new WrongInputException($"The user with the id: {userId} does not exist");
+
+            user.Experience += xpPoints;
+
+            await _DbContext.SaveChangesAsync();
+        }
     }
 }

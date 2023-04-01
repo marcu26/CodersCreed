@@ -241,5 +241,20 @@ namespace Core.Services
             await _unitOfWork.SaveAsync();
         }
 
+        public async Task AddPointsAsync(int points, int userId)
+        {
+            var user = await _unitOfWork._usersRepository.GetUserByIdAsync(userId);
+
+            if(user == null)
+                throw new WrongInputException($"The user with the id: {userId} does not exist");
+
+            if(points < 0)
+                throw new WrongInputException("You can not add a negative number");
+
+            user.Points += points;
+
+            await _unitOfWork.SaveAsync();
+        }
+
     }
 }

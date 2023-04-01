@@ -142,6 +142,20 @@ namespace Api.Controllers
             }
         }
 
-
+        [AllowAnonymous]
+        [HttpGet("add-points")]
+        public async Task<ActionResult> AddPoints([FromBody] int points)
+        {
+            try
+            {
+                int userId = GetUserId();
+                await userService.AddPointsAsync(userId, points);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
