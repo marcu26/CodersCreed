@@ -1,19 +1,15 @@
-<div fxLayoutAlign="center center" fxFlexFill class="main-div" class="formContainer">
-    <mat-card fxFlex="25">
-        <mat-toolbar color="primary" class="containerToolbar">Login</mat-toolbar>
-        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup_login">
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input type="text" matInput formControlName="email">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName="password" autocomplete="">
-            </mat-form-field>
+<mat-toolbar color="primary" class="containerToolbar">Login</mat-toolbar>
+<form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup_login">
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" autocomplete="">
+    </mat-form-field>
 
-            <a routerLink="/reset-password">Forgot password?</a>
-            <br>
-            <button mat-raised-button type="button" (click)="try_login()">Login</button>
-        </form>
-    </mat-card>
-</div>
+    <a routerLink="/reset-password">Forgot password?</a>
+    <br>
+    <button mat-raised-button type="button" (click)="try_login()">Login</button>
+</form>

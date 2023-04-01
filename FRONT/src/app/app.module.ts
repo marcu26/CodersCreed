@@ -35,11 +35,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageDialogComponent } from './dialogs/message-dialog/message-dialog.component';
 import { AuthModule } from './auth/auth.module';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageDialogComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,24 +2,39 @@
     padding: 20px;
 }
 
-.parent{
+.parent {
     position: relative;
     height: 100%;
     width: 100%;
 }
 
-.child{
+.child {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
 }
 
-a:hover{
-  background:#673AB7!important;
+a:hover {
+    background: #673AB7 !important;
 }
 
-a{
+a {
     border-radius: 5px;
     font-weight: bold;
+}
+
+.nav-element {
+    margin-left: 30px;
+    border-radius: 20px;
+}
+
+.nav-element:hover {
+    background-color: white;
+    color: #673AB7;
+}
+
+.nav-element-text {
+    padding: 10px;
+    font-size: 35px;
 }
