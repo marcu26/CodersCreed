@@ -7,10 +7,10 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { RewardsComponent } from './rewards/rewards.component';
 
 const routes: Routes = [
-	{ path: "projects", component: ProjectsComponent },
-	{ path: "leaderboard", component: LeaderboardComponent },
-	{ path: "rewards", component: RewardsComponent },
-	{ path: "profile", component: ProfileComponent },
+	{ path: "projects", component: ProjectsComponent, data: { animation: 'isLeft' } },
+	{ path: "leaderboard", component: LeaderboardComponent, data: { animation: 'isRight' } },
+	{ path: "rewards", component: RewardsComponent, data: { animation: 'rewards' } },
+	{ path: "profile", component: ProfileComponent, data: { animation: 'profile' } },
 	{ path: "login", component: LoginComponent },
 	{ path: "**", component: LoginComponent },
 ];

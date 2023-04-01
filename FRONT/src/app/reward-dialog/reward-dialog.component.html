@@ -1,0 +1,10 @@
+<div class="container">
+    <div mat-dialog-title class="title">{{data.name}}</div>
+    <div mat-dialog-content class="title">
+        {{data.description}}
+    </div>
+    <div mat-dialog-actions [align]="'center'">
+        <button mat-raised-button color="warn" (click)="onNoClick()">No Thanks</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="data.animal" cdkFocusInitial>Claim</button>
+    </div>
+</div>

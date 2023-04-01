@@ -37,7 +37,9 @@ import { RewardsComponent } from './rewards/rewards.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfileComponent,
     RewardsComponent,
     LeaderboardComponent,
+    RewardDialogComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

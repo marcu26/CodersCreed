@@ -1,3 +1,14 @@
 <div class="container-body">
+    <div class="points">X POINTS AVAILABLE</div>
     <div class="title">REWARDS</div>
+    <br>
+    <div *ngFor="let row of matrix;index as i" style="display: flex;">
+        <div *ngFor="let item of row;index as j" style="margin:1%;">
+            <button class="image-button" (click)="openDialog(item)">
+                <h2>REWARD TITLE</h2>
+                <h1>5000 POINTS</h1>
+            </button>
+        </div>
+    </div>
+
 </div>

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent {
-
+  colors = ['#FF9999', '#99FFB6', '#FD99FF', '#99DAFF']
 }
