@@ -4,6 +4,7 @@ using Core.Dtos.Rewards;
 using Core.UnitOfWork;
 using Core.Utils.Pageable;
 using Infrastructure.Exceptions;
+using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Core.Services
             if(reward.IsDeleted)
                 throw new WrongInputException($"Reward with id {rewardId} does not exist.");
 
-            return new GetRewardDto { Name = reward.Name, Description = reward.Description, Cost = reward.Cost };
+            return new GetRewardDto { Name = reward.Name, Description = reward.Description, Cost = reward.Cost, Id = reward.Id };
         }
 
         public async Task DeleteRewardAsync(int rewardId)
@@ -79,6 +80,7 @@ namespace Core.Services
 
             reward.Name = String.IsNullOrEmpty(payload.Name) ? reward.Name : payload.Name;
             reward.Description = String.IsNullOrEmpty(payload.Description) ? reward.Description : payload.Description;
+            reward.Cost = payload.Cost == null ? reward.Cost : payload.Cost.Value;
 
             await _efUnitOfWork.SaveAsync();
         }

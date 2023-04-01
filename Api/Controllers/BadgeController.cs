@@ -1,5 +1,5 @@
-﻿using Core.Database.Entities;
-using Core.Dtos.Rewards;
+﻿
+using Core.Dtos.Badges;
 using Core.Services;
 using Core.Utils.Pageable;
 using Infrastructure.Base;
@@ -10,40 +10,54 @@ namespace Api.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/reward")]
-    public class RewardController : BaseController
+    [Route("api/badge")]
+    public class BadgeController : BaseController
     {
-        public RewardService _rewardService { get; set; }
-
-        public RewardController(RewardService rewardService)
+        public BadgeService _badgeService { get; set; }
+        public BadgeController(BadgeService badgeService)
         {
-            _rewardService = rewardService;
+            _badgeService = badgeService;
         }
 
         [Authorize(Roles = "Administrator")]
         [HttpPost("create")]
-        public async Task<ActionResult> CreateReward([FromBody] CreateRewardDto payload)
+        public async Task<ActionResult> CreateBadge([FromBody] CreateBadgeDto payload)
         {
             try
             {
-                await _rewardService.CreateRewardAsync(payload);
+                await _badgeService.CreateBadgeAsync(payload);
 
                 return Ok();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
         [Authorize(Roles = "Administrator")]
-        [HttpGet("get-by-id/{rewardId}")]
-        public async Task<ActionResult> GetRewardAsync([FromRoute] int rewardId)
+        [HttpGet("get-by-id/{bagdeId}")]
+        public async Task <ActionResult> GetBadgeAsync([FromRoute] int bagdeId)
         {
-            try
-            {
-                var dto = await _rewardService.GetRewardsByIdAsync(rewardId);
+           try
+           {
+                var dto = await _badgeService.GetBadgeByIdAsync(bagdeId);
 
                 return Ok(dto);
+           }
+           catch (Exception ex) 
+           {
+                return BadRequest(ex.Message);
+           }
+        }
+        [Authorize(Roles = "Administrator")]
+        [HttpPut("delete/{badgeId}")]
+        public async Task<ActionResult> DeleteBadgeAsync([FromRoute] int badgeId)
+        {
+            try
+            {
+                await _badgeService.DeleteBadgeAsync(badgeId);
+
+                return Ok();
             }
             catch (Exception ex) 
             {
@@ -51,27 +65,12 @@ namespace Api.Controllers
             }
         }
         [Authorize(Roles = "Administrator")]
-        [HttpPut("delete/{rewardId}")]
-        public async Task<ActionResult> DeleteRewardAsync([FromRoute] int rewardId)
-        {
-            try
-            {
-                await _rewardService.DeleteRewardAsync(rewardId);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [Authorize(Roles = "Administrator")]
         [HttpPut("update")]
-        public async Task<ActionResult> UpdateRewardsAsync([FromBody] UpdateRewardDto payload)
+        public async Task<ActionResult> UpdateBadgeAsync([FromBody] UpdateBadgeDto payload)
         {
             try
             {
-                await _rewardService.UpdateRewardAsync(payload);
+                await _badgeService.UpdateBadgeAsync(payload);
                 return Ok();
             }
             catch (Exception ex)
@@ -79,15 +78,14 @@ namespace Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
 
         [Authorize(Roles = "Administrator")]
         [HttpPost("get-pagina")]
-        public async Task<ActionResult> GetRewardsPaginaAsync([FromBody] PageablePostModel request)
+        public async Task<ActionResult> GetCoursesPaginaAsync([FromBody] PageablePostModel request)
         {
             try
             {
-                var dto = await _rewardService.GetPaginaAsync(request);
+                var dto = await _badgeService.GetPaginaAsync(request);
                 return Ok(dto);
             }
             catch (Exception ex)

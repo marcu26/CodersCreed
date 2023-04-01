@@ -29,6 +29,7 @@ namespace Core.Database.Context
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<TaskToDo> TasksToDo { get; set; }
+        public DbSet<Badge> Badges { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -55,6 +56,7 @@ namespace Core.Database.Context
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Reward>().ToTable("Rewards").HasKey(r => r.Id);
+            modelBuilder.Entity<Badge>().ToTable("Badges").HasKey(b => b.Id);
        
             new DbInitializer(modelBuilder).Seed();
         }

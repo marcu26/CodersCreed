@@ -21,6 +21,7 @@ namespace Core.UnitOfWork
         public QuestionsRepitory _questionsRepitory { get; set; }
         public RewardsRepository _rewardsRepository { get; set; }
  
+        public BadgesRepository _badgesRepository { get; set; }
         public TaskToDoRepository _taskToDoRepository { get; set; }
 
         public EfUnitOfWork(
@@ -32,7 +33,8 @@ namespace Core.UnitOfWork
             TaskToDoRepository taskToDoRepository,
             AnswersRepository answersRepository,
             QuestionsRepitory questionsRepitory,
-            RewardsRepository rewardsRepository
+            RewardsRepository rewardsRepository,
+            BadgesRepository badgesRepository
             )
         {
             _context = context;
@@ -44,6 +46,7 @@ namespace Core.UnitOfWork
             _answersRepository = answersRepository;
             _questionsRepitory = questionsRepitory;
             _rewardsRepository = rewardsRepository;
+            _badgesRepository = badgesRepository;
         }
         public void Dispose()
         {

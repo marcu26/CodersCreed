@@ -41,6 +41,7 @@ namespace Core.Extensions
             services.AddScoped<QuestionsRepitory>();
             services.AddScoped<RewardsRepository>();
             services.AddScoped<TaskToDoRepository>();
+            services.AddScoped<BadgesRepository>();
         }
 
         public static void AddServices(this IServiceCollection services)
@@ -53,6 +54,7 @@ namespace Core.Extensions
             services.AddScoped<CourseService>();
             services.AddScoped<TaskToDoService>();
             services.AddScoped<RewardService>();
+            services.AddScoped<BadgeService>();
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)
