@@ -45,6 +45,8 @@ namespace Core.Extensions
             services.AddScoped<ProjectUserRepository>();
             services.AddScoped<QuizzesRepository>();
             services.AddScoped<BadgesRepository>();
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<UserCategoryRepository>();
         }
 
         public static void AddServices(this IServiceCollection services)
@@ -61,6 +63,7 @@ namespace Core.Extensions
             services.AddScoped<BadgeService>();
             services.AddScoped<ProjectService>();
             services.AddScoped<ProjectUserService>();
+            services.AddScoped<CategoryService>();
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)

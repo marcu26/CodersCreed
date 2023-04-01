@@ -17,5 +17,6 @@ namespace Core.Database.Entities
         public bool IsDone { get; set; } = false;
         public int? UserId { get; set; }
         public int ProjectId { get; set; }
+        public Project Project { get; set; }
     }
 }

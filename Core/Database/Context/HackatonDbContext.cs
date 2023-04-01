@@ -1,4 +1,5 @@
 ﻿using Core.Database.Entities;
+using Core.Repositories;
 using Infrastructure.Config;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -33,6 +34,8 @@ namespace Core.Database.Context
         public DbSet<ProjectUser> ProjectUsers { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Badge> Badges { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<UserCategory> UserCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,10 +54,10 @@ namespace Core.Database.Context
             modelBuilder.Entity<Answer>().ToTable("Answers").HasKey(a => a.Id);
             modelBuilder.Entity<Question>().ToTable("Questions").HasKey(q => q.Id);
             modelBuilder.Entity<Quiz>().ToTable("Quizzes").HasKey(q => q.Id);
-
-
             modelBuilder.Entity<Project>().ToTable("Projects").HasKey(p => p.Id);
             modelBuilder.Entity<ProjectUser>().ToTable("ProjectUsers").HasKey(pu => new {pu.ProjectId, pu.UserId});
+            modelBuilder.Entity<Category>().ToTable("Categories").HasKey(c => c.Id);
+            modelBuilder.Entity<UserCategory>().ToTable("UserCategories").HasKey(uc => new { uc.CategoryId, uc.UserId });
 
             modelBuilder.Entity<Question>().HasMany(q => q.Answers)
                 .WithOne(a=>a.Question)
@@ -81,6 +84,32 @@ namespace Core.Database.Context
                 .HasOne(p => p.User)
                 .WithMany(p => p.ProjectUsers)
                 .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<TaskToDo>()
+                .HasOne(t => t.Project)
+                .WithMany(t => t.Tasks)
+                .HasForeignKey(t => t.ProjectId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Projects)
+                .WithMany(c => c.Categories);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Courses)
+                .WithMany(c => c.Categories);
+
+            modelBuilder.Entity<UserCategory>()
+                .HasOne(t => t.Category)
+                .WithMany(t => t.UserCategories)
+                .HasForeignKey(t => t.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<UserCategory>()
+                .HasOne(t => t.User)
+                .WithMany(t => t.UserCategories)
+                .HasForeignKey(t => t.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Reward>().ToTable("Rewards").HasKey(r => r.Id);

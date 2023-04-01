@@ -11,6 +11,8 @@ namespace Core.Database.Entities
     {
         public string Name { get; set; }
         public List<ProjectUser> ProjectUsers { get; set; } = new List<ProjectUser>();
+        public List<Category> Categories { get; set; }
+        public List<TaskToDo> Tasks { get; set; }
 
     }
 }
