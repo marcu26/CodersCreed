@@ -59,7 +59,7 @@ namespace Api.Controllers
         {
             try
             {
-                
+               
                 var user = await userService.GetUserDtoByIdAsync(userId);
                 return Ok(user);
             }
@@ -131,15 +131,16 @@ namespace Api.Controllers
         [HttpPost("reset-password")]
         public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordDto payload)
         {
-            try
-            {
                 await userService.ResetPasswordAsync(payload);
                 return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("add-reward/{rewardId}")]
+        public async Task<ActionResult> AddRewardToUser([FromRoute] int rewardId)
+        {
+            await userService.AddRewardToUser(GetUserId(), rewardId);
+            return Ok();
         }
 
         [AllowAnonymous]
