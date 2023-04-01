@@ -65,6 +65,17 @@ namespace Core.Services
             await _unitOfWork.SaveAsync();
         }
 
+        public async Task<TaskToDo> GetTaskById(int taskId)
+        {
+            var task = await _unitOfWork._taskToDoRepository.GetTaskById(taskId);
+            if (task == null)
+            {
+                throw new WrongInputException($"Task with id {taskId} does not exist");
+            }
+
+            return task;
+        }
+
         public async Task AssignTaskToUser(int taskId, int userId)
         {
             var task = await _unitOfWork._taskToDoRepository.GetTaskById(taskId);

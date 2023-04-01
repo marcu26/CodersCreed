@@ -24,35 +24,42 @@ namespace Api.Controllers
             return Ok();
         }
 
-        [HttpPost("assign/{taskId}-{userId}")]
+        [HttpGet("get-one/{taskId}")]
+        public async Task<ActionResult> GetTask([FromRoute] int taskId)
+        {
+            var task = await _taskToDoService.GetTaskById(taskId);
+            return Ok(task);
+        }
+
+        [HttpPut("assign/{taskId}-{userId}")]
         public async Task<ActionResult> AssignTaskToUser([FromRoute] int taskId, [FromRoute]int userId)
         {
             await _taskToDoService.AssignTaskToUser(taskId,userId);
             return Ok();
         }
 
-        [HttpPost("edit/{taskId}")]
+        [HttpPut("edit/{taskId}")]
         public async Task<ActionResult> EditTask([FromRoute]int taskId,[FromBody] EditTaskToDoDto payload)
         {
             await _taskToDoService.EditTask(taskId,payload);
             return Ok();
         }
 
-        [HttpPost("mark/{taskId}")]
+        [HttpPut("mark/{taskId}")]
         public async Task<ActionResult> MarkTaskAsDone([FromRoute] int taskId)
         {
             await _taskToDoService.MarkTask(taskId);
             return Ok();
         }
 
-        [HttpPost("unmark/{taskId}")]
+        [HttpPut("unmark/{taskId}")]
         public async Task<ActionResult> UnmarkTask([FromRoute] int taskId)
         {
             await _taskToDoService.UnmarkTask(taskId);
             return Ok();
         }
 
-        [HttpPost("delete/{taskId}")]
+        [HttpPut("delete/{taskId}")]
         public async Task<ActionResult> DeleteTask([FromRoute] int taskId)
         {
             await _taskToDoService.DeleteTask(taskId);
