@@ -26,8 +26,7 @@ namespace Core.UnitOfWork
             RolesRepository rolesRepository,
             UserRoleRepository userRolesRepository,
             UsersRepository usersRepository,
-            CoursesRepository coursesRepository
-            UsersRepository usersRepository,
+            CoursesRepository coursesRepository,
             TaskToDoRepository taskToDoRepository
             )
         {
