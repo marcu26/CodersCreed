@@ -1,8 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { JwtService } from 'src/app/jwt.service';
 import { AuthService } from '../auth.service';
+import { JwtService } from '../jwt.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,6 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
   public formGroup_login: FormGroup;
-
 
   constructor(private auth: AuthService, private router: Router, private jwtService: JwtService) {
     this.formGroup_login = new FormGroup({
@@ -24,7 +23,7 @@ export class LoginComponent {
     this.auth.login(this.formGroup_login.value).subscribe({
       next: (response) => {
         if (response.Token == undefined) {
-          alert(response.Message);
+          alert(response.Message)
           return;
         }
         sessionStorage.setItem("Token", response.Token);
@@ -42,5 +41,4 @@ export class LoginComponent {
       this.try_login();
     }
   }
-
 }

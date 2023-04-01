@@ -1,7 +1,3 @@
-.main-div mat-card {
-    padding: 0px;
-}
-
 .login-form {
     padding: 20px;
 }
@@ -15,6 +11,11 @@
     border-top-right-radius: 5px;
 }
 
-.mat-step-header {
-    pointer-events: none !important;
+a {
+    text-decoration: none;
+}
+
+.container_login {
+    background-color: white;
+    padding: 2px;
 }

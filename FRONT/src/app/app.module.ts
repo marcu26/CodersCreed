@@ -1,7 +1,3 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientJsonpModule } from '@angular/common/http';
 
@@ -34,22 +30,30 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageDialogComponent } from './dialogs/message-dialog/message-dialog.component';
-import { AuthModule } from './auth/auth.module';
 import { ProjectsComponent } from './projects/projects.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RewardsComponent } from './rewards/rewards.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageDialogComponent,
     ProjectsComponent,
+    LoginComponent,
+    ProfileComponent,
+    RewardsComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    AuthModule,
 
     MatIconModule,
     MatFormFieldModule,
@@ -79,31 +83,6 @@ import { ProjectsComponent } from './projects/projects.component';
 
     HttpClientJsonpModule,
     HttpClientModule,
-  ],
-  exports: [
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatMenuModule,
-    MatDividerModule,
-    MatListModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatGridListModule,
-    MatExpansionModule,
-    MatTabsModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

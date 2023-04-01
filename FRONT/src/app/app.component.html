@@ -1,23 +1,23 @@
-<mat-drawer-container class="parent" [ngStyle]="{backgroundImage:'url(./assets/blured-background.jpg)'}">
-  <div fxLayoutAlign="center center" fxFlexFill class="main-div" class="formContainer">
-    <mat-card fxFlex="80">
+<mat-toolbar color="primary">
+  <span>APP NAME</span>
+  <span class="spacer"></span>
+  <span routerLink="projects" type="button" class="nav-element">
+    <div class="nav-element-text" routerLinkActive="active">Projects</div>
+  </span>
+  <span routerLink="profile" type="button" class="nav-element">
+    <div class="nav-element-text" routerLinkActive="active">Leaderboard</div>
+  </span>
+  <span routerLink="profile" type="button" class="nav-element">
+    <div class="nav-element-text" routerLinkActive="active">Profile</div>
+  </span>
+  <span routerLink="profile" type="button" class="nav-element">
+    <div class="nav-element-text" routerLinkActive="active">Rewards</div>
+  </span>
+</mat-toolbar>
+<mat-drawer-container [ngStyle]="{backgroundImage:'url(./assets/blured-background.jpg)'}">
+  <div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card class="transparent">
       <router-outlet></router-outlet>
     </mat-card>
   </div>
 </mat-drawer-container>
-<mat-toolbar color="primary" class="child">
-  <span>APP NAME</span>
-  <span class="spacer"></span>
-  <span routerLink="projects" type="button" class="nav-element">
-    <div class="nav-element-text">Projects</div>
-  </span>
-  <span routerLink="profile" type="button" class="nav-element">
-    <div class="nav-element-text">Leaderboard</div>
-  </span>
-  <span routerLink="profile" type="button" class="nav-element">
-    <div class="nav-element-text">Profile</div>
-  </span>
-  <span routerLink="profile" type="button" class="nav-element">
-    <div class="nav-element-text">Rewards</div>
-  </span>
-</mat-toolbar>
