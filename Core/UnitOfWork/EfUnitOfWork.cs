@@ -26,9 +26,8 @@ namespace Core.UnitOfWork
             RolesRepository rolesRepository,
             UserRoleRepository userRolesRepository,
             UsersRepository usersRepository,
-            CoursesRepository coursesRepository,
             AnswersRepository answersRepository,
-            QuestionsRepitory questionsRepitory
+            QuestionsRepitory questionsRepitory,
             CoursesRepository coursesRepository,
             RewardsRepository rewardsRepository
             )
