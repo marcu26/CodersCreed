@@ -21,6 +21,8 @@ namespace Core.UnitOfWork
         public QuestionsRepsitory _questionsRepitory { get; set; }
         public RewardsRepository _rewardsRepository { get; set; }
         public TaskToDoRepository _taskToDoRepository { get; set; }
+        public ProjectRepository _projectRepository { get; set; }
+        public ProjectUserRepository _projectUserRepository { get; set; }
         public QuizzesRepository _quizzesRepository { get; set; }
         public BadgesRepository _badgesRepository { get; set; }
 
@@ -36,6 +38,10 @@ namespace Core.UnitOfWork
             BadgesRepository badgesRepository,
             QuestionsRepsitory questionsRepitory,
             QuizzesRepository quizzesRepository
+            QuestionsRepitory questionsRepitory,
+            RewardsRepository rewardsRepository,
+            ProjectRepository projectRepository,
+            ProjectUserRepository projectUserRepository
             )
         {
             _context = context;
@@ -49,6 +55,8 @@ namespace Core.UnitOfWork
             _rewardsRepository = rewardsRepository;
             _badgesRepository = badgesRepository;
             _quizzesRepository = quizzesRepository;
+            _projectRepository = projectRepository;
+            _projectUserRepository = projectUserRepository;
         }
         public void Dispose()
         {
