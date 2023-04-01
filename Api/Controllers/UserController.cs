@@ -13,7 +13,7 @@ namespace Api.Controllers
     [Authorize]
     [ApiController]
     [Route("api/users")]
-    public class UserController: BaseController
+    public class UserController : BaseController
     {
         public UserService userService { get; set; }
         public UserController(UserService userService)
@@ -29,7 +29,7 @@ namespace Api.Controllers
             {
                 var user = await userService.CreateUserAsync(payload);
                 GetUserId();
-                
+
                 return Ok();
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace Api.Controllers
         {
             try
             {
-               
+
                 var user = await userService.GetUserDtoByIdAsync(userId);
                 return Ok(user);
             }
@@ -83,7 +83,7 @@ namespace Api.Controllers
             }
         }
 
-        [Authorize(Roles ="Administrator")]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("update-user")]
         public async Task<ActionResult> UpdateUserById([FromBody] UpdateUserDto payload)
         {
@@ -91,13 +91,14 @@ namespace Api.Controllers
             {
                 await userService.UpdateUserByIdAsync(payload);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
-        [Authorize(Roles ="Administrator")]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("change-password")]
         public async Task<ActionResult> ChangePassword([FromBody] ChangeUserPasswordDto payload)
         {
@@ -106,7 +107,8 @@ namespace Api.Controllers
                 var userId = GetUserId();
                 await userService.UpdatePasswordAsync(userId, payload);
                 return Ok();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -131,8 +133,8 @@ namespace Api.Controllers
         [HttpPost("reset-password")]
         public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordDto payload)
         {
-                await userService.ResetPasswordAsync(payload);
-                return Ok();
+            await userService.ResetPasswordAsync(payload);
+            return Ok();
         }
 
         [AllowAnonymous]
@@ -151,20 +153,15 @@ namespace Api.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
-        [HttpGet("add-points")]
-        public async Task<ActionResult> AddPoints([FromBody] int points)
+      
+        [HttpPut("add-xp")]
+        public async Task<ActionResult> AddXp([FromBody] int xpPoints)
         {
-            try
-            {
-                int userId = GetUserId();
-                await userService.AddPointsAsync(userId, points);
-                return Ok();
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            int userId = GetUserId();
+            await userService.AddXpToUserAsync(userId, xpPoints);
+            return Ok();
+
         }
     }
 }
