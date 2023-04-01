@@ -1,0 +1,96 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right {
+    margin-left: auto;
+    color: #efae20;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #8569b6; 
+    transition: background-color 0.3s ease;
+    padding: 20px; 
+}
+
+.right:hover {
+    background-color: #673AB7;;
+    cursor: pointer; 
+}
+
+.left {
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    color: #efae20;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #8569b6; 
+    transition: background-color 0.3s ease;
+    padding: 20px; 
+}
+
+.left:hover {
+    background-color: #673AB7;;
+    cursor: pointer; 
+}
+
+.pdfShow{
+    background-color: #673AB7;
+    width: 90vw;
+    height: 100vh;
+    
+}
+
+.accordion {
+    width: 100%;
+  }
+  
+  .accordion-item {
+    overflow: hidden;
+  }
+  
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    padding: 1rem;
+    border: 1px solid #ddd;
+  }
+  
+  .accordion-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .accordion-description {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .accordion-content {
+    /* height: 0; */
+    width: 90vw;
+    height: 100vh;
+  }
+  
+  .accordion-content .pdfShow {
+    width: 90vw;
+    height: 100vh;
+    padding-bottom: 30px;
+    /* width: 100%;
+    height: calc(100vh - 100px); */
+    border: 2px solid #673AB7;
+  }
+.pdfIframe{
+    width: 90vw;
+    height: 100vh;
+    border-color: #673AB7;
+    border-style: solid; /* Add border style */
+    border-width: 10px;
+}

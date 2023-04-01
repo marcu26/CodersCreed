@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { RewardsComponent } from './rewards/rewards.component';
+import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 const routes: Routes = [
 	{ path: "projects", component: ProjectsComponent, data: { animation: 'isLeft' } },

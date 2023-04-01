@@ -40,6 +40,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
+import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { RewardDialogComponent } from './reward-dialog/reward-dialog.component';
     RewardsComponent,
     LeaderboardComponent,
     RewardDialogComponent,
+    CoursePreviewComponent,
   ],
   imports: [
     BrowserModule,
