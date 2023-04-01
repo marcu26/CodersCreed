@@ -129,15 +129,15 @@ namespace Core.Services
             return userDto;
         }
 
-        public async Task<PageableResponse> GetPaginaAsync(int draw, int start, int length)
+        public async Task<PageableResponse> GetPaginaAsync(PageablePostModel request)
         {
             var dto = await _unitOfWork
                     ._usersRepository
-                    .GetPaginaAsync(start, length);
+                    .GetPaginaAsync(request.start, request.length);
 
             return new PageableResponse()
             {
-                draw = draw,
+                draw = request.draw,
                 recordTotal = dto.NumarTotalRanduri,
                 recordsFiltered = dto.NumarRanduriFiltrate,
                 data = dto.Pagina.Select(e => new UserDto
@@ -162,7 +162,7 @@ namespace Core.Services
             if (user.IsDeleted)
                 throw new WrongInputException($"User with id={payload.UserId} doesn't exist.");
 
-            if (user.Username != null)
+            if (payload.Username != null)
             {
                 var alreadyExists = await _unitOfWork._usersRepository.CheckIfUserAlreadyExistsAsync(payload.Username);
 

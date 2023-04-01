@@ -13,6 +13,8 @@ namespace Core.Database.Entities
         public string Username { get; set; }
         public string Password { get; set; }
         public string ResetPasswordCode { get; set; }
+        public int Points { get; set; } = 0;
+        public int Experience { get; set; } = 0;
         public List<UserRole> UserRoles { get; set; } = new List<UserRole>();
     }
 }

@@ -22,7 +22,9 @@ namespace Core.Database.Context
         {
             modelBuilder.Entity<Role>().HasData(
                    new Role() { Id = 1, Title = RolesEnum.Administrator },
-                   new Role() { Id = 2, Title = RolesEnum.SimpleUser }
+                   new Role() { Id = 2, Title = RolesEnum.Manager },
+                   new Role() { Id = 3, Title = RolesEnum.AccountCreator },
+                   new Role() { Id = 4, Title = RolesEnum.User }
             );
 
             modelBuilder.Entity<User>().HasData(
@@ -40,7 +42,22 @@ namespace Core.Database.Context
                 {
                     RoleId = 1,
                     UserId = 1
-                }
+                },
+                 new UserRole()
+                 {
+                     RoleId = 2,
+                     UserId = 1
+                 },
+                  new UserRole()
+                  {
+                      RoleId = 3,
+                      UserId = 1
+                  },
+                   new UserRole()
+                   {
+                       RoleId = 4,
+                       UserId = 1
+                   }
             );
         }
     }
