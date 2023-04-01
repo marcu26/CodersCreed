@@ -13,5 +13,6 @@ namespace Core.Database.Entities
         public string Description { get; set; }
         public string Image { get; set; }
         public int Points { get; set; }
+        public List<User> Users { get; set; }
     }
 }

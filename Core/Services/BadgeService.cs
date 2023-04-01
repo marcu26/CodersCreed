@@ -119,11 +119,11 @@ namespace Core.Services
             await _efUnitOfWork.SaveAsync();
         }
 
-        public async Task<PageableResponse> GetPaginaAsync(PageablePostModel request)
+        public async Task<PageableResponse> GetPaginaAsync(PageablePostModelBadges request)
         {
             var dto = await _efUnitOfWork
                     ._badgesRepository
-                    .GetPaginaAsync(request.start, request.length);
+                    .GetPaginaAsync(request);
 
             return new PageableResponse()
             {

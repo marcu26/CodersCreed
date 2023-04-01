@@ -271,6 +271,34 @@ namespace Core.Services
             await _unitOfWork.SaveAsync();
         }
 
+        public async Task AddBadgeToUser(int userId, int badgeId)
+        {
+            var user = await _unitOfWork._usersRepository.GetUserByIdAsyncWithProperties(userId);
+
+            if (user == null)
+                throw new WrongInputException($"User with id={userId} does not exist.");
+
+            if (user.IsDeleted)
+                throw new WrongInputException($"User with id={userId} does not exist.");
+
+            var badge = await _unitOfWork._badgesRepository.GetByIdAsync(badgeId);
+
+            if (badge == null)
+                throw new WrongInputException($"Badge with id {badgeId} does not exist.");
+
+            if (badge.IsDeleted)
+                throw new WrongInputException($"Badge with id {badgeId} does not exist.");
+
+            var exists = await _unitOfWork._usersRepository.IsUserHavingTheBadge(userId, badgeId);
+
+            if (exists)
+                throw new WrongInputException($"User with id {userId} allready has the badge {badgeId}");
+
+            user.Badges.Add(badge);
+
+            await _unitOfWork.SaveAsync();
+        }
+
         public async Task AddPointsAsync(int points, int userId)
         {
             var user = await _unitOfWork._usersRepository.GetUserByIdAsync(userId);

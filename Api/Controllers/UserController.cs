@@ -144,6 +144,14 @@ namespace Api.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost("add-badge/{badgeId}")]
+        public async Task<ActionResult> AddBadgeToUser([FromRoute] int badgeId)
+        {
+            await userService.AddBadgeToUser(GetUserId(), badgeId);
+            return Ok();
+        }
+
+        [AllowAnonymous]
         [HttpGet("add-points")]
         public async Task<ActionResult> AddPoints([FromBody] int points)
         {

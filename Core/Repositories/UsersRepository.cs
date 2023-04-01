@@ -90,10 +90,22 @@ namespace Core.Repositories
                 .AnyAsync();
         }
 
+        public async Task<bool> IsUserHavingTheBadge(int userId, int badgeId)
+        {
+            return await _DbContext.Users
+                .Include(u => u.Rewards)
+                .Where(u => u.Id == userId)
+                .Where(u => u.Badges.Any(b => b.Id == badgeId))
+                .AnyAsync();
+        }
+
+
         public async Task<User> GetUserByIdAsyncWithProperties(int userId) 
         {
             return await _DbContext.Users.Where(u => u.Id == userId && !u.IsDeleted)
-                .Include(u=>u.Rewards).FirstOrDefaultAsync();
+                .Include(u=>u.Rewards)
+                .Include(u=>u.Badges)
+                .FirstOrDefaultAsync();
         }
 
         public async Task AddPointsAsync(int points, int userId)

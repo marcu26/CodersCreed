@@ -81,7 +81,7 @@ namespace Api.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpPost("get-pagina")]
-        public async Task<ActionResult> GetCoursesPaginaAsync([FromBody] PageablePostModel request)
+        public async Task<ActionResult> GetCoursesPaginaAsync([FromBody] PageablePostModelBadges request)
         {
             try
             {
