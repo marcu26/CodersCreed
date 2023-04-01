@@ -12,5 +12,6 @@ namespace Core.Dtos.Project
         public int start { get; set; }
         public int length { get; set; }
         public string? Name { get; set; }
+        public int? userId { get; set; }
     }
 }

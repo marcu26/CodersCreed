@@ -122,6 +122,7 @@ namespace Core.Database.Context
 
             modelBuilder.Entity<Reward>().ToTable("Rewards").HasKey(r => r.Id);
             modelBuilder.Entity<Badge>().ToTable("Badges").HasKey(b => b.Id);
+            modelBuilder.Entity<User>().Property(u => u.Image).IsRequired(false);
        
             new DbInitializer(modelBuilder).Seed();
         }

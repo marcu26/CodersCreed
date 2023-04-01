@@ -163,5 +163,14 @@ namespace Api.Controllers
             return Ok();
 
         }
+
+        [HttpPost("get-leaderboard")]
+        public async Task<ActionResult> GetLeaderboard(PageablePostModel request)
+        {
+
+            var dto = await userService.GetLeaderbordAsync(request);
+            return Ok(dto);
+
+        }
     }
 }

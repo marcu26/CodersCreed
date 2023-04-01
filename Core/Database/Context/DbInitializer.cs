@@ -33,7 +33,8 @@ namespace Core.Database.Context
                        Id = 1,
                        Email = "admin",
                        Username = "admin",
-                       Password = "YWRtaW4="
+                       Password = "YWRtaW4=",
+                       Function = "Admin"
                    }
             );
 

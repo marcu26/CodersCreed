@@ -11,6 +11,8 @@ namespace Core.Dtos.Users
     {
         public int UserId { get; set; }
         public string? Username { get; set; }
+        public string? Image { get; set; }
+        public string? Function { get; set; }
         public List<RolesId> Roles { get; set; }
     }
 }

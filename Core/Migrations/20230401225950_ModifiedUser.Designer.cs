@@ -4,6 +4,7 @@ using Core.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Migrations
 {
     [DbContext(typeof(HackatonDbContext))]
-    partial class HackatonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230401225950_ModifiedUser")]
+    partial class ModifiedUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,38 +186,6 @@ namespace Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Courses", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Database.Entities.CourseSection", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Link")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("CourseSections", (string)null);
                 });
 
             modelBuilder.Entity("Core.Database.Entities.Project", b =>
@@ -653,17 +624,6 @@ namespace Core.Migrations
                     b.Navigation("Question");
                 });
 
-            modelBuilder.Entity("Core.Database.Entities.CourseSection", b =>
-                {
-                    b.HasOne("Core.Database.Entities.Course", "Course")
-                        .WithMany("CourseSections")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-                });
-
             modelBuilder.Entity("Core.Database.Entities.ProjectUser", b =>
                 {
                     b.HasOne("Core.Database.Entities.Project", "Project")
@@ -776,8 +736,6 @@ namespace Core.Migrations
 
             modelBuilder.Entity("Core.Database.Entities.Course", b =>
                 {
-                    b.Navigation("CourseSections");
-
                     b.Navigation("Quizzes");
                 });
 
