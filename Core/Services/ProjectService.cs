@@ -64,7 +64,8 @@ namespace Core.Services
             var projDto = new GetProjectDto()
             {
                 Id = projectId,
-                Name = project.Name
+                Name = project.Name,
+                ManagerName = project.ProjectUsers.Where(pu => pu.isManager).Select(pu => pu.User.Username).FirstOrDefault()
             };
 
             return projDto;
@@ -107,10 +108,11 @@ namespace Core.Services
                 draw = request.draw,
                 recordTotal = dto.NumarTotalRanduri,
                 recordsFiltered = dto.NumarRanduriFiltrate,
-                data = dto.Pagina.Select(p => new Project
+                data = dto.Pagina.Select(p => new GetProjectDto
                 {
                    Id = p.Id,
-                   Name = p.Name
+                   Name = p.Name,
+                   ManagerName = p.ProjectUsers.Where(pu=>pu.isManager).Select(pu => pu.User.Username).FirstOrDefault()
                 }
                 )
             };
