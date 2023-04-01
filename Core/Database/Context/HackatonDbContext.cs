@@ -25,6 +25,7 @@ namespace Core.Database.Context
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Reward> Rewards { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Question> Questions { get; set; }
 
@@ -50,6 +51,8 @@ namespace Core.Database.Context
                 .HasForeignKey(a => a.QuestionId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Reward>().ToTable("Rewards").HasKey(r => r.Id);
+       
             new DbInitializer(modelBuilder).Seed();
         }
     }
