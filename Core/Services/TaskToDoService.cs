@@ -140,6 +140,8 @@ namespace Core.Services
             }
 
             task.IsDone = true;
+
+            await _unitOfWork._usersRepository.AddPointsAsync(task.Points, task.UserId.Value);
             await _unitOfWork.SaveAsync();
         }
 
