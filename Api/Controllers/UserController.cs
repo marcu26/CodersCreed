@@ -74,7 +74,7 @@ namespace Api.Controllers
         {
             try
             {
-                var dto = await userService.GetPaginaAsync(request.draw, request.start, request.length);
+                var dto = await userService.GetPaginaAsync(request);
                 return Ok(dto);
             }
             catch (Exception ex)
