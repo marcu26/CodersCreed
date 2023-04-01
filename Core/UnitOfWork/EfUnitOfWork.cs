@@ -29,10 +29,9 @@ namespace Core.UnitOfWork
             UserRoleRepository userRolesRepository,
             UsersRepository usersRepository,
             CoursesRepository coursesRepository,
-            TaskToDoRepository taskToDoRepository
+            TaskToDoRepository taskToDoRepository,
             AnswersRepository answersRepository,
             QuestionsRepitory questionsRepitory,
-            CoursesRepository coursesRepository,
             RewardsRepository rewardsRepository
             )
         {
