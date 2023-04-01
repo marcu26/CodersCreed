@@ -53,6 +53,26 @@ namespace Core.Repositories
             return dto;
         }
 
+        public async Task<PageableDto<User>> GetPaginaAsyncLeaders(int offset, int pageSize)
+        {
+            var dto = new PageableDto<User>();
+
+            var query = _DbContext.Users
+                .Where(e => !e.IsDeleted)
+                .Include(e => e.UserRoles)
+               .AsQueryable();
+            dto.NumarTotalRanduri = await query.CountAsync();
+            dto.NumarRanduriFiltrate = await query.CountAsync();
+
+            dto.Pagina = await query
+                .Skip(offset)
+                .Take(pageSize)
+                .OrderByDescending(e=>e.Experience)
+                .ToListAsync();
+
+            return dto;
+        }
+
         public async Task<User> GetUserByCredentialsAsync(AuthenticationRequestDto payload)
         {
             return await _DbContext.Users
