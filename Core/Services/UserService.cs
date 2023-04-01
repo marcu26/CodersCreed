@@ -128,6 +128,10 @@ namespace Core.Services
                 Username = user.Username,
                 Function =user.Function,
                 Image=user.Image,
+                Email = user.Email,
+                Level = user.Experience / 1000,
+                Points = user.Points,
+                Rank =  _unitOfWork._usersRepository.GetRank(user.Id),
                 Roles = user.UserRoles.Select(r => new RoleDto()
                 {
                     Id = r.Role.Id,
@@ -155,6 +159,10 @@ namespace Core.Services
                     Username = e.Username,
                     Function=e.Function,
                     Image=e.Image,
+                    Email=e.Email,
+                    Level=e.Experience/1000,
+                    Points=e.Points,
+                    Rank = _unitOfWork._usersRepository.GetRank(e.Id),
                     Roles = e.UserRoles.Select(ur => new RoleDto()
                     {
                         Id = ur.Role.Id,
