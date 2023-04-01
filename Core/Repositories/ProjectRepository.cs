@@ -41,14 +41,20 @@ namespace Core.Repositories
 
             var querry = _DbContext
                 .Projects
-                .Where(tm => !tm.IsDeleted)
+                .Where(p => !p.IsDeleted)
+                .Include(p=>p.ProjectUsers)
                 .AsQueryable();
 
             dto.NumarTotalRanduri = await querry.CountAsync();
 
             if (request.Name != null)
             {
-                querry = querry.Where(tm => tm.Name.Contains(request.Name));
+                querry = querry.Where(p => p.Name.Contains(request.Name));
+            }
+
+            if (request.userId != null) 
+            {
+                querry = querry.Where(p => p.ProjectUsers.Any(pu => pu.UserId == request.userId.Value));
             }
 
             dto.NumarRanduriFiltrate = await querry.CountAsync();
