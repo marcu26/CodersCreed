@@ -38,6 +38,14 @@ namespace Core.Repositories
             return dto;
         }
 
+        public async Task<bool> IsCourseAllreadyHadbyUser(int courseId, int userId)
+        {
+            return await _DbContext.Courses
+                        .Include( c => c.Users)
+                        .Where(c => c.Id == userId)
+                        .Where(c => c.Users.Any(u => u.Id== userId))
+                        .AnyAsync();
+        }
 
     }
 }

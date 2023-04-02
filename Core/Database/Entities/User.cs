@@ -21,5 +21,6 @@ namespace Core.Database.Entities
 
         public List<Reward> Rewards { get; set; }
         public List<Badge> Badges { get; set; }
+        public List<Course> Courses { get; set; } = new List<Course>();
     }
 }

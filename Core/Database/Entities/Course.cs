@@ -13,5 +13,7 @@ namespace Core.Database.Entities
         public string Description { get; set; }
         public List<Quiz> Quizzes { get; set; }
         public List<Category> Categories { get; set; }
+        public int Xp { get; set; }
+        public List<User> Users { get; set; }
     }
 }
