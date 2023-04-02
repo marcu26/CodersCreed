@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Dtos.Badges;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace Core.Dtos.Users
         public string Function { get; set; }
         public string Image { get; set; }
         public int Experience { get; set; }
+
+        public List<BadgeForLeaderboardDto> Badges { get; set; }
     }
 }

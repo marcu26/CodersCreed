@@ -62,6 +62,7 @@ namespace Core.Repositories
             var query = _DbContext.Users
                 .Where(e => !e.IsDeleted)
                 .Include(e => e.UserRoles)
+                .Include(e=>e.Badges)
                .AsQueryable();
             dto.NumarTotalRanduri = await query.CountAsync();
             dto.NumarRanduriFiltrate = await query.CountAsync();
