@@ -6,6 +6,7 @@ import { RewardsComponent } from './rewards/rewards.component';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'
+import { ProjectDataComponent } from './project-data/project-data.component';
 
 const routes: Routes = [
 	{ path: "projects", component: ProjectsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
 	{ path: "profile", component: ProfileComponent },
 	{ path: "login", component: LoginComponent },
 	{ path: "course", component: CoursePreviewComponent },
+	{ path: "projectData", component: ProjectDataComponent },
 	{ path: "**", component: LoginComponent },
 ];
 
