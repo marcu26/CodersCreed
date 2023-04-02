@@ -66,6 +66,7 @@ namespace Core.Extensions
             services.AddScoped<ProjectUserService>();
             services.AddScoped<CategoryService>();
             services.AddScoped<CourseSectionService>();
+            services.AddScoped<ObosealaService>();
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)
