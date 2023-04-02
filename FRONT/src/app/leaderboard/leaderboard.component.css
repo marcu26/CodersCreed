@@ -46,7 +46,6 @@
 
 .displayed-image {
     width: 50%;
-    height: 30%;
     display: block;
     margin: 20px;
     margin-left: 25%;
@@ -108,4 +107,14 @@
 
 .items:hover {
     margin-left: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    .displayed-profile {
+        display: none;
+    }
+
+    .row-2 {
+        width: 100%;
+    }
 }

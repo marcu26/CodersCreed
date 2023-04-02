@@ -1,18 +1,39 @@
 <mat-toolbar color="primary">
   <span>APP NAME</span>
   <span class="spacer"></span>
-  <span routerLink="projects" type="button" class="nav-element">
-    <div class="nav-element-text" routerLinkActive="active">Projects</div>
-  </span>
-  <span routerLink="leaderboard" type="button" class="nav-element">
-    <div class="nav-element-text" routerLinkActive="active">Leaderboard</div>
-  </span>
-  <span routerLink="profile" type="button" class="nav-element">
-    <div class="nav-element-text" routerLinkActive="active">Profile</div>
-  </span>
-  <span routerLink="rewards" type="button" class="nav-element">
-    <div class="nav-element-text" routerLinkActive="active">Rewards</div>
-  </span>
+  <div class="list_menu">
+    <span routerLink="projects" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Projects</div>
+    </span>
+    <span routerLink="leaderboard" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Leaderboard</div>
+    </span>
+    <span routerLink="profile" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Profile</div>
+    </span>
+    <span routerLink="rewards" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Rewards</div>
+    </span>
+  </div>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="burger_menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <span routerLink="projects" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Projects</div>
+    </span>
+    <span routerLink="leaderboard" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Leaderboard</div>
+    </span>
+    <span routerLink="profile" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Profile</div>
+    </span>
+    <span routerLink="rewards" type="button" class="nav-element">
+      <div class="nav-element-text" routerLinkActive="active">Rewards</div>
+    </span>
+  </mat-menu>
+
 </mat-toolbar>
 <mat-drawer-container [ngStyle]="{backgroundImage:'url(./assets/blured-background.jpg)'}">
   <div fxLayoutAlign="center center" fxFlexFill>

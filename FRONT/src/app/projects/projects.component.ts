@@ -39,6 +39,7 @@ export class ProjectsComponent {
   get_pagina() {
     this.projectsService.get_pagina(this.pageIndex * this.pageSize, this.pageSize).subscribe({
       next: (response) => {
+        console.log(response)
         this.items = response.data;
         this.length = response.recordTotal;
       },

@@ -8,7 +8,7 @@
     margin-bottom: 10px;
     justify-content: space-between;
     align-items: center;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -34,8 +34,8 @@
     background-color: rgba(124, 114, 114, 0.5);
     margin-right: 20px;
     overflow-y: scroll;
-    
-    
+
+
 }
 
 .list2 {
@@ -64,45 +64,43 @@
     overflow-y: scroll;
 }
 
-.showedData{
-    display:flex;
+.showedData {
+    display: flex;
 
 }
 
-.title2{
+.title2 {
     color: #673AB7;
     font-weight: bold;
     font-size: 40px;
     text-align: center;
-    
+
 }
 
-.title3{
-    padding-left:20px;
+.title3 {
+    padding-left: 20px;
     color: #673AB7;
     font-weight: bold;
     font-size: 40px;
     text-align: left;
-    
+
 }
 
-.title4{
-    padding-left:20px;
+.title4 {
+    padding-left: 20px;
     color: #673AB7;
     font-weight: bold;
     font-size: 30px;
     text-align: left;
-    
+
 }
 
 
-.title5{
-    padding-left:20px;
+.title5 {
+    padding-left: 20px;
     color: #673AB7;
     font-weight: bold;
     font-size: 30px;
     text-align: left;
-    
+
 }
-
-

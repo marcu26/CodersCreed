@@ -30,3 +30,19 @@ mat-toolbar {
 .active {
     color: #FFB800
 }
+
+@media screen and (max-width: 700px) {
+    .list_menu {
+        display: none;
+    }
+
+    .burger_menu {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .burger_menu {
+        display: none;
+    }
+}

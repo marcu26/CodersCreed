@@ -3,10 +3,10 @@
     <br>
     <br>
     <div class="list">
-        <button class="list-item" *ngFor="let item of items" routerLink="/course">
-            <span class="item-text item-element">{{item.timestamp.split('T')[0]}}</span>
+        <button class="list-item" *ngFor="let item of items;index as i" routerLink="/project-data/2">
+            <span class="item-text item-element">{{i + 1}}</span><!--item.timestamp.split('T')[0]-->
             <span class="item-text item-element">{{item.name}}</span>
-            <span class="item-text item-element">Nume manager</span>
+            <span class="item-text item-element">{{item.managerName}}</span>
             <span class="item-element">
                 <button mat-mini-fab disabled>
                     <mat-icon>arrow_forward_ios</mat-icon>

@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./project-data.component.css']
 })
 export class ProjectDataComponent {
-  items = ['1', '2', '3', '4', '2', '3', '4', '2', '3', '4', '2', '3', '4', '2', '3', '4', '2', '3', '4']
+  items = ['1', '2', '3', '4', '2',]
 }
 

@@ -15,8 +15,8 @@ const routes: Routes = [
 	{ path: "rewards", component: RewardsComponent },
 	{ path: "profile", component: CourseQuizzComponent },
 	{ path: "login", component: LoginComponent },
-	{ path: "course", component: CoursePreviewComponent },
-	{ path: "projectData", component: ProjectDataComponent },
+	{ path: "course/:id", component: CoursePreviewComponent },
+	{ path: "project-data/:id", component: ProjectDataComponent },
 	{ path: "**", component: LoginComponent },
 ];
 

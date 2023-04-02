@@ -55,13 +55,14 @@ import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
     LeaderboardComponent,
     RewardDialogComponent,
     CoursePreviewComponent,
-    CourseQuizzComponent],
+    CourseQuizzComponent,
+    ProjectDataComponent],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
