@@ -42,6 +42,7 @@ import { CoursePreviewComponent } from './course-preview/course-preview.componen
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectDataComponent } from './project-data/project-data.component';
+import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
 
 @NgModule({
   declarations: [
@@ -54,10 +55,8 @@ import { ProjectDataComponent } from './project-data/project-data.component';
     LeaderboardComponent,
     RewardDialogComponent,
     CoursePreviewComponent,
-    ProjectDataComponent,
-  ],
+    CourseQuizzComponent],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,

@@ -1,0 +1,36 @@
+ul {
+    list-style-type: none;
+  }
+
+
+  .quizzShow{
+    text-align: center;
+    background-color: rgba(180, 113, 238, 0.5);
+    
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    border: 1px solid #ddd;
+    padding-bottom: 10px;
+    color:white
+    
+}
+
+.buttonSubmit{
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    color: #efae20;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #8569b6; 
+    transition: background-color 0.3s ease;
+    padding: 20px; 
+}
+
+.quizzShow:hover {
+    background-color:#673AB7;
+  }
