@@ -1,76 +1,30 @@
-<div class="container-body" height="100vh" >
-    <div class="title">COURSE PREVIEW</div>
-    <br>
-    <br>
-    <div display="flex"class="flex-container">
-        <div class="right">Quizz</div>
-        
+<div class="container-body" height="100vh">
+  <button mat-button class="quizz" routerLink="quizz/3">
+    <div style="color: #FFB800;">Quizz</div>
+  </button>
+
+  <div class="title">COURSE PREVIEW</div>
+  <br>
+  <br>
+  <div class="list">
+    <div *ngFor="let item of items;index as i" style="margin-top: 10px;">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="item-text item-element">{{i + 1}}</span>
+              <span class="item-text item-element">{{item.title}}</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <iframe class="pdfIframe"
+            src="http://homomorphicencryption.org/wp-content/uploads/2018/11/HomomorphicEncryptionStandardv1.1.pdf"
+            title={{item.title}}></iframe>
+          <button mat-button style="width: 100%;">Mark as completed</button>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
     </div>
-    <br>
-    <br>
-    <!-- <div class="pdfShow">
-        <iframe  class="pdfIframe" src="http://homomorphicencryption.org/wp-content/uploads/2018/11/HomomorphicEncryptionStandardv1.1.pdf" title="Course"></iframe>
-    </div> -->
-    <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header" (click)="expendIt(0)">
-            <div class="accordion-title">This is the course name</div>
-            <div class="accordion-description"> 
-                <button mat-mini-fab disabled>
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-          </div>
-          <div class="accordion-content" *ngIf="isExpendit[0]">
-            <div class="pdfShow">
-              <iframe class="pdfIframe" src="http://homomorphicencryption.org/wp-content/uploads/2018/11/HomomorphicEncryptionStandardv1.1.pdf" title="Course"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header" (click)="expendIt(1)">
-            <div class="accordion-title">This is the course name</div>
-            <div class="accordion-description">
-                <button mat-mini-fab disabled>
-                    <mat-icon>arrow_downward</mat-icon>
-                </button>
-            </div>
-          </div>
-          <div class="accordion-content" *ngIf="isExpendit[1]">
-            <div class="pdfShow">
-              <iframe class="pdfIframe" src="http://homomorphicencryption.org/wp-content/uploads/2018/11/HomomorphicEncryptionStandardv1.1.pdf" title="Course"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="accordion">
-        <div class="accordion-item">
-          <div class="accordion-header" (click)="expendIt(2)">
-            <div class="accordion-title">This is the course name</div>
-            <div class="accordion-description">
-                <button mat-mini-fab disabled>
-                    <mat-icon>arrow_downward</mat-icon>
-                </button>
-            </div>
-          </div>
-          <div class="accordion-content" *ngIf="isExpendit[2]">
-            <div class="pdfShow">
-              <iframe class="pdfIframe" src="http://homomorphicencryption.org/wp-content/uploads/2018/11/HomomorphicEncryptionStandardv1.1.pdf" title="Course"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-    
-      
-      
-    <br>
-    <br>
+  </div>
 
-    <div class="left">Mark as completed</div>
-
-    <br>
-    
 </div>

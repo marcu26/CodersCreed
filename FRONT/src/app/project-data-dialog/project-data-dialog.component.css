@@ -1,0 +1,16 @@
+.container {
+    background-image: url('../../assets/blured-background.jpg');
+    height: 100%;
+}
+
+mat-dialog-actions {
+    justify-content: center;
+}
+
+mat-toolbar {
+    background: none;
+}
+
+mat-spinner {
+    margin-left: 40%;
+}

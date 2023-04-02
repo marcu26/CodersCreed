@@ -9,7 +9,40 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./rewards.component.css']
 })
 export class RewardsComponent {
-  button = [0, 0, 0, 0, 0, 0, 0, 0]
+  button = [
+    {
+      name: "Gym Membership",
+      price: "4000 POINTS"
+    },
+    {
+      name: "Free Day",
+      price: "5550 POINTS"
+    },
+    {
+      name: "Movie Ticket",
+      price: "2500 POINTS"
+    },
+    {
+      name: "Teather Ticket",
+      price: "3400 POINTS"
+    },
+    {
+      name: "Gym Membership",
+      price: "4000 POINTS"
+    },
+    {
+      name: "Free Day",
+      price: "5550 POINTS"
+    },
+    {
+      name: "Movie Ticket",
+      price: "2500 POINTS"
+    },
+    {
+      name: "Teather Ticket",
+      price: "3400 POINTS"
+    },
+  ]
   matrix: Array<any> = [];
 
   ngOnInit() {

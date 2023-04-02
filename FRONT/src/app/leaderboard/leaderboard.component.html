@@ -4,17 +4,15 @@
             <div class="selected-item-title justify-content-md-center">TOP {{index+1}}</div>
             <br>
             <img class="displayed-image justify-content-center align-items-center" src="../../assets/placeholder.jpg">
-            <div class="selected-item-title justify-content-md-center">{{index !== -1
-                ?items[index].username
-                : "Developer" }}
+            <div class="selected-item-title justify-content-md-center">{{items[index].username}}
             </div>
-            <div class="selected-item-title justify-content-md-center">{{index !== -1 ?
-                items[index].function
-                : "Developer"}}</div>
+            <div class="selected-item-title justify-content-md-center">{{ items[index].function !== "" ?
+                items[index].function : "Developer" }}</div>
             <div class="bar" style="margin-top: 30px;"></div>
             <div *ngIf="index!==-1">
                 <div class="selected-item-badge justify-content-md-center" *ngFor="let item of items[index].badges">
-                    {{item.name}}</div>
+                    <img src="./../../assets/icon_2.png">{{item.name}}
+                </div>
             </div>
 
 

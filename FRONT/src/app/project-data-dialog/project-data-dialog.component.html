@@ -1,0 +1,20 @@
+<div class="container">
+
+    <div mat-dialog-title class="title">{{data.item.name}}</div>
+
+    <div mat-dialog-content class="title" style="margin-bottom: -10px;">
+        {{data.item.description}}
+        <mat-spinner *ngIf="openSpinner"></mat-spinner>
+        <div *ngIf="openWeb">
+            <webcam [height]=" 350" [width]="1000" [trigger]="triggerObservable" (imageCapture)="handleImage($event)">
+            </webcam>
+            <button mat-raised-button color="primary" (click)="triggerSnapshot()">Show us how you feel</button>
+        </div>
+
+    </div>
+    <div mat-dialog-actions [align]="'center'">
+        <button mat-raised-button color="warn" (click)="onNoClick()" [disabled]="openSpinner">No Thanks</button>
+        <button mat-raised-button color="primary" (click)="isAptToWork()" [disabled]="openSpinner">Assign To Me</button>
+    </div>
+
+</div>

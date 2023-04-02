@@ -25,12 +25,13 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MessageDialogComponent } from './dialogs/message-dialog/message-dialog.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -43,11 +44,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectDataComponent } from './project-data/project-data.component';
 import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
+import { ProjectDataDialogComponent } from './project-data-dialog/project-data-dialog.component';
+import { WebcamModule } from 'ngx-webcam';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessageDialogComponent,
     ProjectsComponent,
     LoginComponent,
     ProfileComponent,
@@ -56,7 +58,8 @@ import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
     RewardDialogComponent,
     CoursePreviewComponent,
     CourseQuizzComponent,
-    ProjectDataComponent],
+    ProjectDataComponent,
+    ProjectDataDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -68,8 +71,10 @@ import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatRadioModule,
     FlexLayoutModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
     MatMenuModule,
     MatDividerModule,
@@ -88,6 +93,7 @@ import { CourseQuizzComponent } from './course-quizz/course-quizz.component';
     MatButtonToggleModule,
     MatAutocompleteModule,
     MatTooltipModule,
+    WebcamModule,
 
     HttpClientJsonpModule,
     HttpClientModule,

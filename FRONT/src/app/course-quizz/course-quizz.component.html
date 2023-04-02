@@ -1,35 +1,21 @@
 <div class="container-body">
-    <div class="title">PROFILE</div>
-    <div class="container">
-        <br>
-        <br>
-        <div class="quizzShow" *ngFor="let question of questions">
-            <h3>{{ question.question }}</h3>
-            <ul>
-              <li *ngFor="let choice of question.choices">
-                <label>
-                  <input type="radio"
-                         name="question{{ question.id }}"
-                         [value]="choice"
-                         [(ngModel)]="question.selected"
-                         (change)="selectAnswer()">
-                  {{ choice }}
-                </label>
-              </li>
-            </ul>
-            <div *ngIf="!question.selected" class="error-message">
-              Please select an answer.
-            </div>
-            
-          </div>
-          
-          <br>
-          
-          <div display="flex">
-          <button class="buttonSubmit" [disabled]="!allQuestionsAnswered" (click)="submit()">Submit</button>
-        </div>
-          <div *ngIf="quizCompleted">
-            <p>Your score: {{ score }} out of {{ questions.length }}</p>
-          </div>
-      
+  <div class="title">QUIZZ</div>
+
+
+  <div *ngFor="let item of questions;index as j">
+    <mat-card class="question_item">
+      <p style="font-size: 20px;">{{j+1}}. {{item.question}}</p>
+      <mat-radio-group>
+        <mat-radio-button *ngFor="let choice of item.choices;index as i" [value]="i">
+          {{choice}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card>
+  </div>
+
+  <button mat-raised-button color="primary" class="submit_quiz" color="primary" (click)="submit()">SUBMIT QUIZ</button>
+
+  <br>
+  <h2 *ngIf="quizCompleted">Quizz completed! You have scored: {{this.score}} </h2>
+
 </div>
