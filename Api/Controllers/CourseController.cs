@@ -97,5 +97,12 @@ namespace Api.Controllers
         }
 
 
+        [HttpPost("add-course/{courseId}-{userId}")]
+        public async Task<ActionResult> MarkCourseAsDone([FromRoute]int courseId,[FromRoute] int userId)
+        {
+            await _courseService.AddUserToCourse(userId, courseId);
+            return Ok();    
+        }
+
     }
 }
