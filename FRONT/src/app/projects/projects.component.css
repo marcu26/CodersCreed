@@ -28,3 +28,11 @@
 .list {
     padding-bottom: 10px;
 }
+
+mat-paginator {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+}

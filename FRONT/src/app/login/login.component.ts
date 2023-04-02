@@ -1,8 +1,9 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 import { JwtService } from '../jwt.service';
+import { UserService } from '../api/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { JwtService } from '../jwt.service';
 export class LoginComponent {
   public formGroup_login: FormGroup;
 
-  constructor(private auth: AuthService, private router: Router, private jwtService: JwtService) {
+  constructor(private userService: UserService, private router: Router, private cookies: CookieService) {
     this.formGroup_login = new FormGroup({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -20,14 +21,15 @@ export class LoginComponent {
   }
 
   try_login() {
-    this.auth.login(this.formGroup_login.value).subscribe({
+    this.userService.authentificate_user(this.formGroup_login.value).subscribe({
       next: (response) => {
-        if (response.Token == undefined) {
+        console.log(response);
+        if (response.token == undefined) {
           alert(response.Message)
           return;
         }
-        sessionStorage.setItem("Token", response.Token);
-        this.router.navigate(['library'])
+        this.cookies.set('token', response.token);
+        this.router.navigate(['projects'])
       },
       error: (error) => {
         alert("Email or password wrong!")

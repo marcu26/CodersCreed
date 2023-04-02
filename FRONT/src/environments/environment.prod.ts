@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  URL: 'https://localhost:7264/api',
-  URLCookies: 'https://scientometrybackend.azurewebsites.net',
+  URL: 'https://10.0.0.22:9999/api/',
 };

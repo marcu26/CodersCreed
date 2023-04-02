@@ -4,8 +4,8 @@
     <br>
     <div class="list">
         <button class="list-item" *ngFor="let item of items" routerLink="/course">
-            <span class="item-text item-element">15 ian.</span>
-            <span class="item-text item-element">Nume proiect</span>
+            <span class="item-text item-element">{{item.timestamp.split('T')[0]}}</span>
+            <span class="item-text item-element">{{item.name}}</span>
             <span class="item-text item-element">Nume manager</span>
             <span class="item-element">
                 <button mat-mini-fab disabled>
@@ -14,4 +14,10 @@
             </span>
         </button>
     </div>
+
+    <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+        [pageSize]="pageSize" [disabled]="disabled" [showFirstLastButtons]="showFirstLastButtons"
+        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+        [pageIndex]="pageIndex" aria-label="Select page">
+    </mat-paginator>
 </div>
