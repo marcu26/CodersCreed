@@ -13,6 +13,7 @@ using ISoft.Travel.Core.Services;
 using System.Data;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Identity.Client;
+using Core.Dtos.Badges;
 
 namespace Core.Services
 {
@@ -188,7 +189,8 @@ namespace Core.Services
                     Username = e.Username,
                     Function = e.Function,
                     Image = e.Image,
-                    Experience = e.Experience
+                    Experience = e.Experience,
+                    Badges = e.Badges.Select(b => new BadgeForLeaderboardDto { Image=b.Image, Name=b.Name }).Take(5).ToList()
                 })
             };
         }
