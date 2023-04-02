@@ -5,6 +5,7 @@ using Core.Dtos.Users;
 using Core.UnitOfWork;
 using Core.Utils.Pageable;
 using Infrastructure.Exceptions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -136,6 +137,8 @@ namespace Core.Services
 
             user.Courses.Add(course);
             user.Experience += course.Xp;
+
+            course.Categories.ForEach(c => c.UserCategories.Where(uc => uc.UserId == userId).ToList().ForEach(u => u.Experience+=course.Xp));
 
             await _efUnitOfWork.SaveAsync();
         }
