@@ -65,7 +65,8 @@ namespace Core.Services
             {
                 Id = projectId,
                 Name = project.Name,
-                ManagerName = project.ProjectUsers.Where(pu => pu.isManager).Select(pu => pu.User.Username).FirstOrDefault()
+                ManagerName = project.ProjectUsers.Where(pu => pu.isManager).Select(pu => pu.User.Username).FirstOrDefault(),
+                Timestamp = project.Timestamp
             };
 
             return projDto;
@@ -112,7 +113,8 @@ namespace Core.Services
                 {
                    Id = p.Id,
                    Name = p.Name,
-                   ManagerName = p.ProjectUsers.Where(pu=>pu.isManager).Select(pu => pu.User.Username).FirstOrDefault()
+                   ManagerName = p.ProjectUsers.Where(pu=>pu.isManager).Select(pu => pu.User.Username).FirstOrDefault(),
+                   Timestamp = p.Timestamp
                 }
                 )
             };
