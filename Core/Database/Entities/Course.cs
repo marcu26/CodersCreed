@@ -16,5 +16,6 @@ namespace Core.Database.Entities
         public int Xp { get; set; }
         public List<User> Users { get; set; }
         public List<CourseSection> CourseSections { get; set; }
+        public bool isMandatory { get; set; }
     }
 }

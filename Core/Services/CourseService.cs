@@ -31,7 +31,7 @@ namespace Core.Services
             if (exist)
                 throw new WrongInputException($"Course with name {payload.Name} allready exists");
 
-            var course = new Course { Name = payload.Name, Description = payload.Description, Xp = payload.Xp };
+            var course = new Course { Name = payload.Name, Description = payload.Description, Xp = payload.Xp, isMandatory = payload.isMandatory };
 
             _efUnitOfWork._coursesRepository.Add(course);
 
@@ -48,7 +48,7 @@ namespace Core.Services
             if (course.IsDeleted)
                 throw new WrongInputException($"Course with id {courseId} does not exist.");
 
-            return new GetCouseDto { Description=course.Description, Name =course.Name, Id=course.Id, Xp = course.Xp };
+            return new GetCouseDto { Description=course.Description, Name =course.Name, Id=course.Id, Xp = course.Xp, isMandatory = course.isMandatory };
         }
 
         public async Task DeleteCourseAsync(int courseId)
@@ -87,6 +87,7 @@ namespace Core.Services
             course.Name = String.IsNullOrEmpty(payload.Name) ? course.Name : payload.Name;
             course.Description = String.IsNullOrEmpty(payload.Description) ? course.Description : payload.Description;
             course.Xp = payload.Xp == null ? course.Xp : payload.Xp.Value;
+            course.isMandatory = payload.isMandatory == null ? course.isMandatory: payload.isMandatory.Value;
 
             await _efUnitOfWork.SaveAsync();
         }
@@ -107,7 +108,8 @@ namespace Core.Services
                     Id = e.Id,
                     Name = e.Name,
                     Description = e.Description,
-                    Xp = e.Xp
+                    Xp = e.Xp,
+                    isMandatory= e.isMandatory
                 })
             };
         }

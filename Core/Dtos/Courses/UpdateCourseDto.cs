@@ -12,5 +12,7 @@ namespace Core.Dtos.Courses
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int? Xp { get; set; }
+        public bool? isMandatory { get; set; }
+
     }
 }
